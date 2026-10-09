@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="浙江大学 2026-2027 秋冬《程序设计与算法基础》课程网站" name="description"/>
+<link href="https://goldfishhorse.github.io/2026_FPA/env/" rel="canonical"/>
+<link href=".." rel="prev"/>
+<link href="../debug/" rel="next"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<title>开发环境安装与第一次编译运行 - ZJU FPA 2026 Fall</title>
+<link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../css/heti.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/utils/katex.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&amp;display=fallback" rel="stylesheet"/>
+<link href="../css/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#_1">
+          跳转至
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="页眉" class="md-header__inner md-grid">
+<a aria-label="ZJU FPA 2026 Fall" class="md-header__button md-logo" data-md-component="logo" href=".." title="ZJU FPA 2026 Fall">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            ZJU FPA 2026 Fall
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              开发环境安装与第一次编译运行
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="夜间模式" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="夜间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+</label>
+<input aria-label="日间模式" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="teal" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="日间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="查找" class="md-search__options">
+<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" title="清空当前内容" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/GoldfishHorse/2026_FPA/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GoldfishHorse/2026_FPA
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="导航栏" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="ZJU FPA 2026 Fall" class="md-nav__button md-logo" data-md-component="logo" href=".." title="ZJU FPA 2026 Fall">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    ZJU FPA 2026 Fall
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/GoldfishHorse/2026_FPA/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GoldfishHorse/2026_FPA
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    
+  
+    主页
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    开发环境安装与第一次编译运行
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    开发环境安装与第一次编译运行
+  
+
+    
+  </span>
+</a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      
+        准备第一个程序
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ide">
+<span class="md-ellipsis">
+      
+        在线 IDE
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dev-c">
+<span class="md-ellipsis">
+      
+        Dev-C++
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#xcode">
+<span class="md-ellipsis">
+      
+        Xcode
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vs-code">
+<span class="md-ellipsis">
+      
+        VS Code：推荐的通用方案
+      
+    </span>
+</a>
+<nav aria-label="VS Code：推荐的通用方案" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-vs-code-cc">
+<span class="md-ellipsis">
+      
+        1. 安装 VS Code 和 C/C++ 扩展
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2">
+<span class="md-ellipsis">
+      
+        2. 安装编译器
+      
+    </span>
+</a>
+<nav aria-label="2. 安装编译器" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#windows">
+<span class="md-ellipsis">
+      
+        Windows
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#macos">
+<span class="md-ellipsis">
+      
+        macOS
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-vscode">
+<span class="md-ellipsis">
+      
+        3. VSCode 使用的一个简单示例
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      
+        常见问题
+      
+    </span>
+</a>
+<nav aria-label="常见问题" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gcc-clang">
+<span class="md-ellipsis">
+      
+        提示找不到 gcc 或 clang
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#helloc">
+<span class="md-ellipsis">
+      
+        提示找不到 hello.c
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      
+        编译成功，却没有看到输出
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      
+        修改了代码，运行结果却没有变化
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      
+        出现语法错误或链接错误
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../debug/">
+<span class="md-ellipsis">
+    
+  
+    调试技术
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../style/">
+<span class="md-ellipsis">
+    
+  
+    编程规范
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../faq/">
+<span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      
+        准备第一个程序
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ide">
+<span class="md-ellipsis">
+      
+        在线 IDE
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dev-c">
+<span class="md-ellipsis">
+      
+        Dev-C++
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#xcode">
+<span class="md-ellipsis">
+      
+        Xcode
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vs-code">
+<span class="md-ellipsis">
+      
+        VS Code：推荐的通用方案
+      
+    </span>
+</a>
+<nav aria-label="VS Code：推荐的通用方案" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-vs-code-cc">
+<span class="md-ellipsis">
+      
+        1. 安装 VS Code 和 C/C++ 扩展
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2">
+<span class="md-ellipsis">
+      
+        2. 安装编译器
+      
+    </span>
+</a>
+<nav aria-label="2. 安装编译器" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#windows">
+<span class="md-ellipsis">
+      
+        Windows
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#macos">
+<span class="md-ellipsis">
+      
+        macOS
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-vscode">
+<span class="md-ellipsis">
+      
+        3. VSCode 使用的一个简单示例
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      
+        常见问题
+      
+    </span>
+</a>
+<nav aria-label="常见问题" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gcc-clang">
+<span class="md-ellipsis">
+      
+        提示找不到 gcc 或 clang
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#helloc">
+<span class="md-ellipsis">
+      
+        提示找不到 hello.c
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      
+        编译成功，却没有看到输出
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      
+        修改了代码，运行结果却没有变化
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      
+        出现语法错误或链接错误
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="_1">开发环境安装与第一次编译运行</h1>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>本文档参考了<span class="heti-skip"><span class="heti-spacing"> </span>ZhouTimeMachine<span class="heti-spacing"> </span></span>在<span class="heti-skip"><span class="heti-spacing"> </span>2023<span class="heti-spacing"> </span></span>年为程算课程准备的<a href="https://zhoutimemachine.github.io/2023_FPA/">资料</a>。</p>
+</div>
+<p>本节要完成两件事：</p>
+<ol>
+<li>在自己的电脑上准备好可以<strong>编写、编译和运行</strong> <span>C<span class="heti-spacing"> </span></span>程序的开发环境；</li>
+<li>成功编译并运行第一个<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>程序。</li>
+</ol>
+<p>课程<strong>不限制</strong>你使用哪一种开发环境。只要能可靠地处理 <code>.c</code> 文件、编译标准<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>程序并方便你完成作业即可。你可以用包括但不限于</p>
+<ul>
+<li>Dev-C++</li>
+<li>Xcode</li>
+<li>Visual Studio Code</li>
+<li>CodeBlocks</li>
+<li>...</li>
+</ul>
+<p>选择<strong>其中之一</strong>即可。对初学者，用<span class="heti-skip"><span class="heti-spacing"> </span>MS Windows<span class="heti-spacing"> </span></span>系统同学可以先使用<span><span class="heti-spacing"> </span>Dev-C++</span>；用<span class="heti-skip"><span class="heti-spacing"> </span>Mac OS<span class="heti-spacing"> </span></span>同学可以使用<span><span class="heti-spacing"> </span>Xcode</span>。<del>用<span class="heti-skip"><span class="heti-spacing"> </span>Linux<span class="heti-spacing"> </span></span>系统的同学显然不需要指导</del>。也推荐大家尝试搭建<span><span class="heti-spacing"> </span>VS Code</span>。后文会提供搭建这些环境的具体操作。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>我们这门课程使用的软件都是<strong>免费</strong>的，如果遇到安装付费或者使用付费的情况，一定是下载错了。</p>
+</div>
+<p>先认识三个概念：</p>
+<ul>
+<li><strong>编辑器</strong> <span>(editor)<span class="heti-spacing"> </span></span>用来编写代码。<span>VS Code<span class="heti-spacing"> </span></span>就是编辑器；安装<span class="heti-skip"><span class="heti-spacing"> </span>VS Code<span class="heti-spacing"> </span></span>并不等于安装了<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>编译器。</li>
+<li><strong>编译器</strong> <span>(compiler)<span class="heti-spacing"> </span></span>把 <code>.c</code> 源代码转换为计算机可以执行的程序，如<span class="heti-skip"><span class="heti-spacing"> </span>GCC<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>Clang</span>。</li>
+<li><strong>集成开发环境</strong>（IDE） 把编辑、编译、运行和调试等功能放在同一个软件中。<span>Dev-C++<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>Xcode<span class="heti-spacing"> </span></span>都属于<span><span class="heti-spacing"> </span>IDE</span>。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>一段<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>程序通常会经过预处理、编译、汇编和链接，最终生成可执行文件。我们把这一整套过程简称为“编译”即可。
+有一本书叫 《程序员的自我修养——链接、装载与库》，关于链接和装载等系统软件知识，可以去读这本书。</p>
+</div>
+<div align="center">
+<p><img alt="从源代码到可执行文件" src="graph/compile.png"/></p>
+</div>
+<h2 id="_2">准备第一个程序</h2>
+<p>下面的程序就是经典的 <code>Hello World</code>，其运行效果是在终端输出 <code>Hello World</code>。</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="p">{</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Hello, world!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>可以用这段代码来检验环境是否成功配置。不过请注意：
++ 在本地，文件名应为 <code>hello.c</code>，后缀是 <code>.c</code>，不是 <code>.cpp</code> 或别的东西；
++ 代码中的括号、引号和分号都应使用英文符号（半角）；
++ 在本地，编译前先 <code>Ctrl+S</code> 保存文件；
++ 在本地，应该把代码放在<strong>纯英文、没有空格的路径</strong>中，能避开许多工具的路径兼容问题。</p>
+<h2 id="ide">在线<span><span class="heti-spacing"> </span>IDE</span></h2>
+<p>在线<span class="heti-skip"><span class="heti-spacing"> </span>IDE<span class="heti-spacing"> </span></span>适用于非计算机专业同学。配好环境的同学也可以看一看，因为你可能偶尔临时用到一个没有配置环境的电脑，这时使用在线<span class="heti-skip"><span class="heti-spacing"> </span>IDE<span class="heti-spacing"> </span></span>最为便捷。当然，在线<span class="heti-skip"><span class="heti-spacing"> </span>IDE<span class="heti-spacing"> </span></span>功能有限，无法代替一个本地<span><span class="heti-spacing"> </span>IDE</span>。</p>
+<p>步骤如下：</p>
+<ul>
+<li>打开这个网址：<www.onlinegdb.com>。</www.onlinegdb.com></li>
+<li>它已经为你写好<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>语言的<span class="heti-skip"><span class="heti-spacing"> </span>Hello World<span class="heti-spacing"> </span></span>程序源码。</li>
+<li>在右上角选择<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>语言，然后点击左上角的<span><span class="heti-spacing"> </span>Run</span>。</li>
+<li>在下方，你就可以看见程序的输出。</li>
+</ul>
+<div align="center">
+<p><img alt="" src="graph/onlinegdb.jpg"/></p>
+</div>
+<p>按下<span class="keys"><kbd class="key-enter"><span class="heti-skip"><span class="heti-spacing"> </span>Enter<span class="heti-spacing"> </span></span></kbd></span>键离开终端。下方会显示几个选项：</p>
+<ul>
+<li>Command Line Arguments：命令行参数</li>
+<li>Standard Input：标准输入。你可以选择<span><span class="heti-spacing"> </span>Interactive Console</span>（就是正常地用键盘和程序交互）或者<span><span class="heti-spacing"> </span>Text</span>（预先准备一些文本自动输入，通常用于测试<span class="heti-skip"><span class="heti-spacing"> </span>PTA<span class="heti-spacing"> </span></span>的样例数据<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
+</ul>
+<h2 id="dev-c">Dev-C++</h2>
+<p><span>Dev-C++<span class="heti-spacing"> </span></span>是一个开箱即用的<span><span class="heti-spacing"> </span>IDE</span>，适合希望先完成第一次编译运行的初学者（下载安装时请选择<strong>包含<span class="heti-skip"><span class="heti-spacing"> </span>TDM-GCC<span class="heti-spacing"> </span></span>编译器</strong>的版本，即 <code>Embarcadero_Dev-Cpp_6.3_TDM-GCC_9.2_Setup.exe</code><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<ul>
+<li><a href="https://github.com/Embarcadero/Dev-Cpp">Embarcadero Dev-C++</a></li>
+<li><a href="https://sourceforge.net/projects/embarcadero-devcpp/files/v6.3/">Dev-C++ 6.3（SourceForge）</a></li>
+</ul>
+<p>安装完成后：</p>
+<ol>
+<li>打开<span><span class="heti-spacing"> </span>Dev-C++</span>，选择 <strong>文件（File）→ 新建（New）→ 源代码（Source File）</strong>；</li>
+<li>写入上面的<span class="heti-skip"><span class="heti-spacing"> </span>Hello World<span class="heti-spacing"> </span></span>程序；</li>
+<li>按 <code>Ctrl+S</code>，将文件保存为 <code>hello.c</code>；——<strong>注意保存时后缀名一定要选 <code>.c</code></strong>！</li>
+<li>选择 <strong>运行（Execute）→ 编译并运行（Compile &amp; Run）</strong>；</li>
+<li>如果出现一个黑色窗口并显示 <code>Hello, world!</code>，就说明你配置完成了。</li>
+</ol>
+<div align="center">
+<p><img alt="" src="graph/devc.jpg"/></p>
+</div>
+<div align="center">
+<p><img alt="" src="graph/devc_hw.jpg"/></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>蓝色图标的（旧版）Dev-C++ <img alt="devc" height="24" src="https://a.fsdn.com/allura/p/dev-cpp/icon" style="vertical-align: middle;" width="24"/>   由独立开发者<span class="heti-skip"><span class="heti-spacing"> </span>Orwelldevcpp<span class="heti-spacing"> </span></span>开发（现已停止<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，最新版本为<span><span class="heti-spacing"> </span>5.11</span>，使用<span><span class="heti-spacing"> </span>GCC 4.9</span>，上次更新时间为<span class="heti-skip"><span class="heti-spacing"> </span>2015<span class="heti-spacing"> </span></span>年<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>月。下载链接位于<a href="http://orwelldevcpp.blogspot.com/"><span><span class="heti-spacing"> </span>http://orwelldevcpp.blogspot.com/</span></a>。
+这个版本有些过于老旧，在现在可能会遇到各种问题。而 Embarcadero Dev-C++ <img alt="embarcadero-devcpp" height="24" src="https://a.fsdn.com/allura/p/embarcadero-devcpp/icon" style="vertical-align: middle;" width="24"/> 是原版<span class="heti-skip"><span class="heti-spacing"> </span>Dev-C++<span class="heti-spacing"> </span></span>的继承和发展。</p>
+</div>
+<h2 id="xcode">Xcode</h2>
+<p>Xcode <img alt="Xcode" height="24" src="https://developer.apple.com/assets/elements/icons/xcode-s-dark/xcode-s-dark-96x96_2x.png" style="vertical-align: middle;" width="24"/>  是<span class="heti-skip"><span class="heti-spacing"> </span>Apple<span class="heti-spacing"> </span></span>提供的开发环境，可以从<a href="https://apps.apple.com/app/xcode/id497799835"><span class="heti-skip"><span class="heti-spacing"> </span>Mac App Store<span class="heti-spacing"> </span></span></a>安装。它的安装包较大，请预留下载和安装时间。</p>
+<p>安装完成后：</p>
+<ol>
+<li>打开<span><span class="heti-spacing"> </span>Xcode</span>，选择 <strong>Create New Project</strong>；</li>
+<li>选择 <strong>macOS → Command Line Tool</strong>；</li>
+<li><code>Product Name</code> 可以填写 <code>hello</code>，<code>Language</code> 选择 <strong>C</strong>；</li>
+<li>创建项目后，用上面的<span class="heti-skip"><span class="heti-spacing"> </span>Hello World<span class="heti-spacing"> </span></span>程序替换 <code>main.c</code> 中的内容；</li>
+<li>点击左上角的运行按钮，或按 <code>Command+R</code>；</li>
+<li>如果控制台中出现 <code>Hello, world!</code>，环境就可以使用了。</li>
+</ol>
+<p><span>Apple<span class="heti-spacing"> </span></span>官方关于创建<span class="heti-skip"><span class="heti-spacing"> </span>Xcode<span class="heti-spacing"> </span></span>项目的说明可以参考：<a href="https://developer.apple.com/documentation/xcode/creating-an-xcode-project-for-an-app">https://developer.apple.com/documentation/xcode/creating-an-xcode-project-for-an-app</a></p>
+<p>一个演示视频：<a href="https://www.bilibili.com/video/BV11gs6zNEni/">https://www.bilibili.com/video/BV11gs6zNEni/</a></p>
+<h2 id="vs-code">VS Code：推荐的通用方案</h2>
+<p><span>VS Code<span class="heti-spacing"> </span></span>跨平台、插件丰富，今后的课程和项目中也能继续使用，因此比较推荐同学们尝试。但是它本身<strong>只是编辑器</strong>，因此需要再安装 <strong><span>C/C++<span class="heti-spacing"> </span></span>扩展和编译器</strong>。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>请注意，Visual Studio Code <img alt="VSC" height="24" src="https://code.visualstudio.com/assets/branding/code-stable.png" style="vertical-align: middle;" width="24"/> <strong>不是</strong> Visual Studio<img alt="VS" height="24" src="https://images.icon-icons.com/112/PNG/512/visual_studio_18908.png" style="vertical-align: middle;" width="24"/> 。不要弄混了，不要用后者。</p>
+</div>
+<h3 id="1-vs-code-cc"><span>1.<span class="heti-spacing"> </span></span>安装<span class="heti-skip"><span class="heti-spacing"> </span>VS Code<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>C/C++<span class="heti-spacing"> </span></span>扩展</h3>
+<p>从<a href="https://code.visualstudio.com/"><span class="heti-skip"><span class="heti-spacing"> </span>VS Code<span class="heti-spacing"> </span></span>官网</a>  下载对应系统的安装包。<span>Windows<span class="heti-spacing"> </span></span>安装程序中建议勾选“添加到<span><span class="heti-spacing"> </span>PATH</span>”和“将<span class="heti-skip"><span class="heti-spacing"> </span>Code<span class="heti-spacing"> </span></span>注册为受支持的文件类型的编辑器”。</p>
+<p>打开<span><span class="heti-spacing"> </span>VS Code</span>，点击左侧“扩展”图标 <img alt="" src="graph/plugin.png"/>，搜索并安装<span class="heti-skip"><span class="heti-spacing"> </span>Microsoft<span class="heti-spacing"> </span></span>发布的 <strong>C/C++</strong> 扩展。这个扩展提供代码高亮、补全和调试支持，但它本身仍然不是编译器。</p>
+<div align="center">
+<p><img alt="在 VS Code 中安装 C/C++ 扩展" src="graph/plugin_ccpp.png"/></p>
+</div>
+<p>如有需要，还可以安装<span class="heti-skip"><span class="heti-spacing"> </span>Microsoft<span class="heti-spacing"> </span></span>发布的界面汉化插件 <strong>Chinese (Simplified) Language Pack</strong>。</p>
+<div align="center">
+<p><img alt="" src="graph/plugin_chinese.png"/></p>
+</div>
+<p>安装汉化插件后可能需要你手动切换显示语言。Ctrl + Shift + P，出现的搜索框中输入<span><span class="heti-spacing"> </span>Configure</span>，选择<span><span class="heti-spacing"> </span>Configure Display Language</span>。</p>
+<div align="center">
+<p><img alt="" src="graph/config_language.png"/></p>
+</div>
+<p>随后再选择“中文<span class="heti-skip"><span class="heti-spacing"> </span>(<span class="heti-spacing"> </span></span>简体<span><span class="heti-spacing"> </span>)</span>”就可以完成界面汉化了。</p>
+<div align="center">
+<p><img alt="" src="graph/chinese_english.png"/></p>
+</div>
+<h3 id="2"><span>2.<span class="heti-spacing"> </span></span>安装编译器</h3>
+<h4 id="windows">Windows</h4>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>Windows<span class="heti-spacing"> </span></span>平台上，我们可以使用 <code>MinGW-w64 GCC</code>。下面提供两种安装方法，<strong>任选一种即可</strong>，不要重复安装多套编译器。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"/><input id="__tabbed_1_2" name="__tabbed_1" type="radio"/><div class="tabbed-labels"><label for="__tabbed_1_1">WinLibs</label><label for="__tabbed_1_2">TDM-GCC</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><span>MinGW-w64<span class="heti-spacing"> </span></span>不只是一个编译器，而是一套完整的工具集合。简单来说，它提供了在<span class="heti-skip"><span class="heti-spacing"> </span>Windows<span class="heti-spacing"> </span></span>上使用<span class="heti-skip"><span class="heti-spacing"> </span>GCC<span class="heti-spacing"> </span></span>所需的编译器、链接器、库和头文件等工具。</p>
+<ol>
+<li>
+<p>从<a href="https://winlibs.com/"><span class="heti-skip"><span class="heti-spacing"> </span>WinLibs<span class="heti-spacing"> </span></span></a>或其<a href="https://github.com/brechtsanders/winlibs_mingw/"><span class="heti-skip"><span class="heti-spacing"> </span>GitHub<span class="heti-spacing"> </span></span>仓库</a> 下载打包好的<span class="heti-skip"><span class="heti-spacing"> </span>GCC + MinGW-w64<span class="heti-spacing"> </span></span>工具链，<code>.zip</code> 或 <code>.7z</code> 压缩包均可。</p>
+<div align="center" markdown="1">
+<p><img alt="在 WinLibs 中选择下载版本" src="graph/winlibs.jpg"/></p>
+</div>
+<div align="center" markdown="1">
+<p><img alt="下载 WinLibs 压缩包" src="graph/winlibs2.jpg"/></p>
+</div>
+</li>
+<li>
+<p>解压到固定的<strong>纯英文路径</strong>，路径中不要有空格，例如 <code>C:\mingw64</code>。不要在使用期间随意移动它。</p>
+</li>
+<li>确认该目录下存在 <code>bin\gcc.exe</code>，然后把 <code>bin</code> 文件夹的完整路径（例如 <code>C:\mingw64\bin</code>）加入<span class="heti-skip"><span class="heti-spacing"> </span>Windows<span class="heti-spacing"> </span></span>的 <code>Path</code> 环境变量。</li>
+<li><strong>关闭并重新打开</strong>终端和<span><span class="heti-spacing"> </span>VS Code</span>，让新的环境变量生效。</li>
+</ol>
+<p>添加 <code>Path</code> 的方法：按 <code>Win+R</code>，输入 <code>sysdm.cpl</code> 并回车，依次打开“高级 → 环境变量”，在“用户变量”中的 <code>Path</code> 新增上述 <code>bin</code> 路径。不要删除 <code>Path</code> 中已有的其他项目。</p>
+</div>
+<div class="tabbed-block">
+<p>从<a href="https://jmeubank.github.io/tdm-gcc/download/"><span class="heti-skip"><span class="heti-spacing"> </span>TDM-GCC<span class="heti-spacing"> </span></span></a>选择 <code>tdm64-gcc-10.3.0-2.exe</code> 下载安装程序，然后选择 <strong>Create</strong>。</p>
+<p></p><div style="text-align:center;">
+<img alt="在 TDM-GCC 安装程序中创建新环境" src="./graph/tdmgcc_create.png" style="margin: 0 auto; zoom: 40%;"/>
+</div>
+<p>选择<span class="heti-skip"><span class="heti-spacing"> </span>64<span class="heti-spacing"> </span></span>位系统：</p>
+<p></p><div style="text-align:center;">
+<img alt="选择 64 位 TDM-GCC" src="./graph/tdm32_or_64.png" style="margin: 0 auto; zoom: 40%;"/>
+</div>
+<p>选择安装路径，推荐使用默认路径：</p>
+<p></p><div style="text-align:center;">
+<img alt="选择 TDM-GCC 安装路径" src="./graph/tdmgcc_path.png" style="margin: 0 auto; zoom: 40%;"/>
+</div>
+<p>安装选项中注意勾选 <strong>Add to PATH</strong>：</p>
+<p></p><div style="text-align:center;">
+<img alt="将 TDM-GCC 添加到 PATH" src="./graph/tdmgcc_install_items.png" style="margin: 0 auto; zoom: 40%;"/>
+</div>
+</div>
+</div>
+</div>
+<p>安装完成后，在一个新终端中执行：</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">gcc</span> <span class="p">-</span><span class="n">-version</span>
+</span></code></pre></div></td></tr></table></div>
+<p>能看到<span class="heti-skip"><span class="heti-spacing"> </span>GCC<span class="heti-spacing"> </span></span>的版本信息即表示编译器可用。</p>
+<div align="center">
+<p><img alt="" src="graph/gcc_v.jpg"/></p>
+</div>
+<p>如果没有版本信息，可能是你还没有安装<span><span class="heti-spacing"> </span>gcc</span>，或者你前一步 <code>Add to PATH</code> 没有正常进行，可能需要参照<a href="#windows"><span class="heti-skip"><span class="heti-spacing"> </span>Windows<span class="heti-spacing"> </span></span>修改环境变量</a>进行环境变量的检查。</p>
+<p><span>VS Code<span class="heti-spacing"> </span></span>官方还提供了 <a href="https://code.visualstudio.com/docs/cpp/config-mingw">使用<span class="heti-skip"><span class="heti-spacing"> </span>MinGW-w64<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>GCC<span class="heti-spacing"> </span></span>的教程</a>。</p>
+<h4 id="macos">macOS</h4>
+<p><span>macOS<span class="heti-spacing"> </span></span>可以直接使用<span class="heti-skip"><span class="heti-spacing"> </span>Apple<span class="heti-spacing"> </span></span>提供的<span class="heti-skip"><span class="heti-spacing"> </span>Clang<span class="heti-spacing"> </span></span>编译器。可见<a href="https://code.visualstudio.com/docs/cpp/config-clang-mac"><span class="heti-skip"><span class="heti-spacing"> </span>VS Code<span class="heti-spacing"> </span></span>官方教程</a>。若已经安装<span><span class="heti-spacing"> </span>Xcode</span>，一般无需重复安装命令行工具。</p>
+<p>首先在“终端”中执行：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>xcode-select<span class="w"> </span>--install
+</span></code></pre></div></td></tr></table></div>
+<p>这条命令安装<span><span class="heti-spacing"> </span>Apple Command Line Tools</span>，其次执行</p>
+<p></p><div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>clang<span class="w"> </span>--version
+</span></code></pre></div></td></tr></table></div>
+检查 Clang 是否安装完成。如果可以正常显示版本信息，即说明编译器可用。
+<h3 id="3-vscode"><span>3. VSCode<span class="heti-spacing"> </span></span>使用的一个简单示例</h3>
+<p>如下是<span class="heti-skip"><span class="heti-spacing"> </span>VS Code<span class="heti-spacing"> </span></span>的页面：</p>
+<div align="center">
+<p><img alt="" src="graph/VSC_intro.jpg"/></p>
+</div>
+<p>先创建一个专门存放代码的文件夹，例如 <code>D:\code\fpa</code>。然后打开<span><span class="heti-spacing"> </span>VS Code</span>， <span>VS Code<span class="heti-spacing"> </span></span>中选择 <strong>File → Open Folder</strong>，打开这个文件夹。</p>
+<p>随后在左侧打开的工作目录区 右键 → <span>New File<span class="heti-spacing"> </span></span>新建代码文件，输入文件名例如 <code>hello.c</code>，写入上面的<span class="heti-skip"><span class="heti-spacing"> </span>Hello World<span class="heti-spacing"> </span></span>程序并按 <code>Ctrl+S</code>（<span>macOS<span class="heti-spacing"> </span></span>为 <code>Command+S</code>）保存。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>左侧标签如果仍显示 <code>Untitled-1</code>，或者文件名旁有表示未保存的圆点，说明代码还没有正确保存。终端无法编译一个只存在于编辑器、尚未保存的文件。</p>
+<p>一些同学写了代码后没有保存文件，文件名为 <code>Untitled-1</code> 或 <code>#include &lt;stdio.h&gt;</code>，如下图所示</p>
+<p></p><div style="text-align:center;">
+<img alt="file_untitled" src="./graph/file_untitled.png" style="margin: 0 auto; zoom: 80%;"/>
+</div>
+<p></p><div style="text-align:center;">
+<img alt="file_not_saved" src="./graph/file_not_saved.png" style="margin: 0 auto; zoom: 80%;"/>
+</div>
+<p>这些都属于没有保存的情况。</p>
+<p>文件命名请使用全英文，最好能表达这个代码文件的功能，并且加上 <code>.c</code> 的后缀名。</p>
+</div>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>VS Code<span class="heti-spacing"> </span></span>顶部选择 <strong>Terminal → New Terminal</strong>。如果你按上一小节打开了文件夹，新终端通常已经位于 <code>hello.c</code> 所在目录。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"/><input id="__tabbed_2_2" name="__tabbed_2" type="radio"/><div class="tabbed-labels"><label for="__tabbed_2_1">Windows（GCC）</label><label for="__tabbed_2_2">macOS（Clang）</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>编译：</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="n">gcc</span> <span class="n">hello</span><span class="p">.</span><span class="n">c</span> <span class="n">-o</span> <span class="n">hello</span><span class="p">.</span><span class="n">exe</span>
+</span></code></pre></div></td></tr></table></div>
+<p>运行：</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="p">.\</span><span class="n">hello</span><span class="p">.</span><span class="n">exe</span>
+</span></code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<p>编译：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>clang<span class="w"> </span>hello.c<span class="w"> </span>-o<span class="w"> </span>hello
+</span></code></pre></div></td></tr></table></div>
+<p>运行：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>./hello
+</span></code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<p>如果终端输出</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>Hello, world!
+</span></code></pre></div></td></tr></table></div>
+<p>就说明编辑器、编译器、工作目录和运行方式都已经配置正确。</p>
+<div align="center">
+<p><img alt="" src="graph/VSC_hw.jpg"/></p>
+</div>
+<p>这里的 <code>-o</code> 用来指定输出文件名。如果省略它，<span>GCC<span class="heti-spacing"> </span></span>通常会在<span class="heti-skip"><span class="heti-spacing"> </span>Windows<span class="heti-spacing"> </span></span>生成 <code>a.exe</code>，在<span class="heti-skip"><span class="heti-spacing"> </span>macOS<span class="heti-spacing"> </span></span>生成 <code>a.out</code>。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>还应区分：</p>
+<ul>
+<li><code>gcc hello.c -o hello.exe</code> 是<strong>编译</strong>，成功时通常不会输出任何提示；</li>
+<li><code>.\hello.exe</code> 或 <code>./hello</code> 才是<strong>运行</strong>刚生成的程序。</li>
+</ul>
+</div>
+<h2 id="_3">常见问题</h2>
+<h3 id="gcc-clang">提示找不到 <code>gcc</code> 或 <code>clang</code></h3>
+<ul>
+<li><span>Windows<span class="heti-spacing"> </span></span>出现“无法将 <code>gcc</code> 识别为命令”或“不是内部或外部命令”，通常是编译器没有安装好，或编译器的 <code>bin</code> 目录没有正确加入 <code>Path</code>；</li>
+<li>修改 <code>Path</code> 后必须关闭并重新打开终端和<span><span class="heti-spacing"> </span>VS Code</span>；</li>
+</ul>
+<p>这类错误发生在编译器启动之前，通常与 <code>hello.c</code> 中的代码无关。</p>
+<h3 id="helloc">提示找不到 <code>hello.c</code></h3>
+<p>例如：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a>fatal error: hello.c: No such file or directory
+</span></code></pre></div></td></tr></table></div>
+<p>这表示终端当前所在目录中没有 <code>hello.c</code>。请检查：</p>
+<ol>
+<li>文件是否已经保存，扩展名是否确实为 <code>.c</code>；</li>
+<li><span>VS Code<span class="heti-spacing"> </span></span>是否打开了包含该文件的文件夹；</li>
+<li>终端提示符显示的路径是否与左侧工作文件夹一致；</li>
+<li>在终端执行 <code>dir</code>（Windows）或 <code>ls</code>（macOS / Linux<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，能否看到 <code>hello.c</code>。</li>
+</ol>
+<h3 id="_4">编译成功，却没有看到输出</h3>
+<p>编译和运行是两步。输入 <code>gcc hello.c -o hello.exe</code> 后没有报错，只代表已经生成程序；还要输入 <code>.\hello.exe</code> 才会运行。<span>macOS / Linux<span class="heti-spacing"> </span></span>对应执行 <code>./hello</code>。</p>
+<h3 id="_5">修改了代码，运行结果却没有变化</h3>
+<p>先保存源文件，再重新编译，最后重新运行。旧的可执行文件不会因为源代码发生变化而自动更新。</p>
+<h3 id="_6">出现语法错误或链接错误</h3>
+<p>先定位输出中的第一条 <code>error</code>，并检查：</p>
+<ul>
+<li><code>main</code>、<code>printf</code>、<code>#include &lt;stdio.h&gt;</code> 是否拼写正确；</li>
+<li>英文分号 <code>;</code>、引号 <code>"</code> 和括号是否完整；</li>
+<li>文件是否保存；</li>
+<li>编译命令中的文件名是否与实际文件名完全一致；</li>
+<li>当前工作目录、以及编译器安装路径是否是纯英文的，并且路径中不包含空格。</li>
+</ul>
+<p><code>ld returned 1 exit status</code> 或 <code>linker command failed</code> 往往只是最后的汇总信息，真正原因通常在它前面的报错中。</p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<nav aria-label="页脚" class="md-footer__inner md-grid">
+<a aria-label="上一页: 主页" class="md-footer__link md-footer__link--prev" href="..">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                上一页
+              </span>
+<div class="md-ellipsis">
+                主页
+              </div>
+</div>
+</a>
+<a aria-label="下一页: 调试技术" class="md-footer__link md-footer__link--next" href="../debug/">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                下一页
+              </span>
+<div class="md-ellipsis">
+                调试技术
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2026 贺俊哲；基于 <a href="https://github.com/ZhouTimeMachine/2023_FPA" rel="noopener" target="_blank">ZhouTimeMachine/2023_FPA</a> 修改
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+<script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+<script src="../js/katex.js"></script>
+</body>
+</html>
