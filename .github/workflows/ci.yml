@@ -1,26 +1,28 @@
-name: ci 
+name: Deploy documentation
+
 on:
   push:
     branches:
-      - master 
       - main
+
 permissions:
   contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
         with:
-          python-version: 3.x
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
-      - uses: actions/cache@v3
-        with:
-          key: mkdocs-material-${{ env.cache_id }}
-          path: .cache
-          restore-keys: |
-            mkdocs-material-
-      - run: pip install mkdocs-material
-      - run: pip install mkdocs-heti-plugin
-      - run: mkdocs gh-deploy --force
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: pip install mkdocs-material mkdocs-heti-plugin
+
+      - name: Deploy to GitHub Pages
+        run: mkdocs gh-deploy --force

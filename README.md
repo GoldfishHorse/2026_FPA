@@ -1,25 +1,35 @@
-# 浙江大学 2023 秋冬程序设计与算法基础
-本仓库为浙江大学 2023 秋冬《程序设计与算法基础》课程仓库，目前暂定主要面向 2023 级图灵班翁恺老师教学班，也欢迎其他同学参考。
+# 浙江大学 2026-2027 秋冬《程序设计与算法基础》
 
-本人是第一次使用 mkdocs 搭建课程指导网站，参考了 [Guahao](https://github.com/Guahao31/2023_DD)、[zjuerDFL](https://github.com/zjuerDFL/2023_EBD/tree/main) 和 [CTF 短学期课程仓库](https://github.com/team-s2/summer_course_2023)。由于本人经验极少，知识面不广，写作过程可能容易出现纰漏与不当，如果有任何意见欢迎提出 issue，或通过其他任何方式联系我。
+本仓库是浙江大学 2026-2027 秋冬学期《程序设计与算法基础》课程辅助文档，适用于[应晶老师](https://person.zju.edu.cn/0095096)的教学班，主要为零基础同学提供开发环境安装、第一次编译运行和调试等方面的说明。
 
-建议使用[在线文档](https://zhoutimemachine.github.io/2023_FPA/)，或者如果希望本地部署，可以首先安装 mkdocs 支持
-```
-pip install mkdocs
-pip install mkdocs-material
-pip install mkdocs-heti-plugin
+在线文档：<https://goldfishhorse.github.io/2026_FPA/>
+
+## 本地预览
+
+首先安装 MkDocs、Material for MkDocs 和本文档使用的排版插件：
+
+```bash
+pip install mkdocs-material mkdocs-heti-plugin
 ```
 
-打开实时渲染服务（默认端口 8000）
-```
+在仓库根目录启动实时预览服务：
+
+```bash
 mkdocs serve
 ```
 
-如果顺利的话，在浏览器中输入 `127.0.0.1:8000` 就可以本地预览了。但是如果 8000 端口被占用，可能需要指定一个新的端口，以 8001 为例：
-```
+然后访问 <http://127.0.0.1:8000/>。如果 8000 端口已被占用，可以指定其他端口，例如：
+
+```bash
 mkdocs serve -a 127.0.0.1:8001
 ```
 
-此时就需要使用 `127.0.0.1:8001` 进行本地预览了。
+对应的访问地址为 <http://127.0.0.1:8001/>。
 
-本仓库实时更新，因此如果使用本地预览，可以时不时 `git pull` 以获取最新版本。
+提交并推送到 `main` 分支后，GitHub Actions 会自动构建文档并部署到 GitHub Pages。
+
+## 致谢与许可
+
+本文档基于 [ZhouTimeMachine/2023_FPA](https://github.com/ZhouTimeMachine/2023_FPA) 修改和扩充。感谢原作者以及文档中列出的其他资料作者。
+
+原项目采用 [CC BY 4.0](LICENSE) 许可协议发布，本项目保留原项目的署名和许可证信息。

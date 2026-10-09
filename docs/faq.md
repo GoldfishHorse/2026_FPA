@@ -1,182 +1,90 @@
-# FAQ(Frequently Asked Questions)
+# FAQ (常见问题及回答)
 
-在这里提供一些经常被问到的问题，遇到问题时可以首先在这里查找是否已经有解决方案
 
-## 必须了解的内容
+!!! note
+    在向他人提问之前，请注意：
 
-- Windows 的截图快捷键是 Windows+Shift+S，请务必截屏不要拍照
-- 路径全英文，即包含代码文件的文件夹、上一层文件夹、上上层文件夹……的名字都是英文
+    + 是否有尝试搜索相关的问题？
+        —— 优先**积极搜索**，bing、google、[stackoverflow](https://stackoverflow.com/) 经常可以找到答案。
+        （或许初学时百度百科、百度知道、CSDN 能够给你一些似乎还行的指引，但是随着你逐渐熟练，你会发现他们带给你的坑将远比帮助更多。）
+    + [提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md)
+    + 【新生宝典】不要再拍屏了！新生大学习之如何正确地截图 https://www.cc98.org/topic/6265782 复制本链接到浏览器或者打开【CC98】微信小程序查看~
 
-## gcc 是否安装成功？
+## 关于开发环境
 
-在终端输入 `gcc` 后看见
-```
-gcc: 致命错误: 没有输入文件
-```
++ 如何让代码跑起来？
++ 提示找不到 gcc 或 clang
++ 提示找不到 `hello.c`、`fatal error: hello.c: No such file or directory` 或者类似信息；
 
-这是正常的输出，只是 `gcc: fatal error: no input files` 的中文翻译而已。 
+请见  [开发环境安装与第一次编译运行](env/index.md)。
 
-输入 `gcc--version` 后出现
-```
-‘gcc--version’ 不是内部或外部命令，也不是可运行的程序或批处理文件
-```
+## Dev-C++ 提示 ld.exe	cannot open output file XXX.exe: Permission denied
 
-只是你在 `gcc` 和 `--version` 中间少打了一个空格。
+<div align="center" markdown="1">
 
-同理，如果你 `wsl--install` 无法执行，请关注一下你是不是少打了一个空格。
+![](./graph/devc_permission_denied.jpg)
 
-## WSL 安装报错
-
-即报错 `WslRegisterDistribution failed with error`，目前已经出现如下几种错误编号
-
-=== "0x800701bc"
-
-    ```
-    WslRegisterDistribution failed with error: 0x800701bc
-    Error: 0x800701bc WSL 2 ?????????????????? https://aka.ms/wsl2kernel
-    ```
-
-=== "0x80370102"
-
-    ```
-    WslRegisterDistribution failed with error: 0x80370102
-    Please enable the Virtual Machine Platform Windows feature and ensure virtualization is enabled in the BIOS.
-    For information please visit https://aka.ms/enablevirtualization
-    ```
-
-=== "0x80370114"
-
-    ```
-    WslRegisterDistribution failed with error: 0x80370114
-    Error: 0x80370114 ??????????????????
-    ```
-
-=== "0x80004002"
-
-    ```
-    WslRegisterDistribution failed with error: 0x80370114
-    Error: 0x80370114 ??????????????????
-    ```
-
-=== "0x8007019e"
-
-    ```
-    WslRegisterDistribution failed with error: 0x80370114
-    Error: 0x80370114 ??????? Linux ? Windows ???
-    ```
-
-对于不在上面的错误编号，建议使用 [bing](https://cn.bing.com)，把错误信息复制粘贴进行搜索，一般能找到解决方案；也可以先试试下面的方法。
-
-对于上面有的错误编号，尝试这篇[解决 WSL2 的 0x800701bc 错误](https://zhuanlan.zhihu.com/p/599286889)。虽然你的错误编号可能不是这个，但也是可以用的，因为这篇文章给出的是旧版 WSL 的手动安装步骤，事实上来自[微软官方文档](https://learn.microsoft.com/zh-cn/windows/wsl/install-manual)。你也可以直接参考官方文档。
-
-进行以上操作后，尝试在终端打开 Ubuntu，如果打开成功并让你注册用户名，则可以继续 WSL 安装。如果仍然不行，则尝试打开控制面板(Control Panel)-程序与功能(Programs and Features)-启用或关闭 Windows 功能（Turn Windows Features on or off），选上红框标注的两个功能：
-
-- 虚拟机平台（Virtual Machine Platform）
-- Windows 虚拟机监控程序平台（Windows Hypervisor Platform）
-
-<div style="text-align:center;">
-    <img src="../graph/windows_feature.png" alt="windows_feature" style="margin: 0 auto; zoom: 80%;"/>
 </div>
 
-重启电脑，然后重新执行
-```
-wsl --set-default-version 2
-```
+一种可能的原因是：检查一下是不是上一次程序没关，也就是受，你之前运行了一次程序，而没有以恰当的方式结束进程，导致控制台窗口仍然开着。关闭即可。
 
-然后再在终端打开 Ubuntu，观察是否能继续安装。
+## 本地 Hello World 编译运行，出结果速度很慢
 
-对于 `0x80370102` 错误，比较顽固，参考[官方文档](https://aka.ms/enablevirtualization)还需要更多的步骤。在终端中输入如下命令：
-```
-bcdedit /enum | findstr -i hypervisorlaunchtype
-```
+可能是 Windows Defender 或者其它的安全软件在扫描生成的可执行文件，将其关闭即可。
 
-如果显示 `hypervisorlaunchtype Off`，说明你需要将其启动。输入如下命令：
-```
-bcdedit /set hypervisorlaunchtype Auto
-```
+可见
 
-再重启，尝试在终端打开 Ubuntu，此时问题应当被解决。
++ [新电脑使用Dev-C++时进行编译运行，运行时出结果速度缓慢，要8秒左右，是什么原因啊？](https://www.zhihu.com/question/618314899)
++ [Windows11下由Windows Defender造成的C语言代码编译运行卡顿](https://michsong.com/posts/techtalk/windows11%E4%B8%8B%E7%94%B1windows-defender%E9%80%A0%E6%88%90%E7%9A%84c%E8%AF%AD%E8%A8%80%E4%BB%A3%E7%A0%81%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C%E5%8D%A1%E9%A1%BF/)
 
-## “WSL 外” 和 “WSL 内”
 
-以下窗口就是我所说的“WSL 外”，即 Windows 本机，不在其 Ubuntu 虚拟机中。
+## 为什么教材里写的是 `main()` 而不是 `int main()`？
 
-<div style="text-align:center;">
-    <img src="../graph/wsl_out.png" alt="wsl_out" style="margin: 0 auto; zoom: 80%;"/>
+ Brian W. Kernighan 和 Dennis M. Ritchie（通常简称为K&R）的《C程序设计语言》这本书虽然是最著名和经典的 C 语言教材，但现在部分内容已经过时了。早期  C 语言刚出来时，确实可以直接写 `main()` 而不加前面的 `int`。但就现在的标准而言，由于`main`函数的返回值是整形，它前面那个 `int` 是必须的，不写的话编译器可能会报错。
+
+<div align="center" markdown="1">
+
+![](https://picx.zhimg.com/v2-a63d6786afab51481764c159b84b027e_r.jpg)
+
 </div>
 
-以下窗口则是“WSL 内”，即 Ubuntu 虚拟机中。
+ 同理，某些资料还会出现 `void main()`，这是**错误的** 写法！可见 [C 语言中 int main() 和 void main() 有何区别？](https://www.zhihu.com/question/60047465)
 
-<div style="text-align:center;">
-    <img src="../graph/wsl_in.png" alt="wsl_in" style="margin: 0 auto; zoom: 80%;"/>
+
+## C++（Cpp） 和 C 有什么不同？
+
+C++ 和 C 是**两种不同的编程语言**；在 C++ 设计之初，作者 Bjarne Stroustrup 希望兼容 C 语言，因而保留了 C 中几乎所有的内容。虽然某些 C 语言程序可以“当作 C++ 程序”来编译和运行，但是本质上， C++ 有比 C 更广泛的编程风格以及很多不同的功能，某些东西也在 C 和 C++ 中有不同的含义，所以并不能把 C 当作 C++ 的子集、或者 C++ 是 C 的扩展等等。
+
+C# 是另一种语言，也不要和 C++ 或 C 搞混了。
+
+可以参考这篇文章：[Understanding the Differences Between C#, C++, and C](https://csharp-station.com/understanding-the-differences-between-c-c-and-c/) by Janice Friedman 。
+
+## 为什么报错 `expected ';' before ...`？
+
+通常上一行末尾少了分号。编译器报错位置有时会偏后，要看它前面一行。
+
+## 为什么我的程序在编译器能跑出来但是在 PTA 上就出问题？
+
+因为“本地能跑”只说明它在你电脑的环境下、你试的那组输入下没崩。
+
+例如，对某些实际上错误的写法（例如函数在声明之前调用），你电脑上的编译器可能会放你一马，但是 但 PTA 不会惯着你的程序。例如对未初始化的变量 `int a;`，你的编译器可能会默认把 a 初始化为 0，但 PTA 不一定。
+
+此外，除了题目描述中的数据外，PTA 系统还会使用多组不同的、有挑战性的数据测试你提交的程序。请检查你的程序，确保它能正确地处理题目描述范围内的所有情况。
+
+也可以使用 PTA 题目页面的“测试用例”功能，观察其输出是否和样例一致。
+
+## 为什么 PTA 的测试点显示 运行超时/段错误/浮点错误/...？
+它们的含义如下：
+<div align="center" markdown="1">
+
+![](./graph/PTA_status.jpg)
+
 </div>
 
-WSL 命令（例如 `wsl --shutdown`）只能在 WSL 外进行，在 WSL 内执行 WSL 命令就像大力士希望把自己举起来一样，是无法进行的。
+## 其它常见C语言程序问题
 
-## 未保存代码文件/命名诡异
+<div align="center" markdown="1">
 
-但是一些同学写了代码后没有保存文件，文件名为 `Untitled-1` 或 `#include <stdio.h>`，如下图所示
+![](./graph/FAQ_Programming.jpg)
 
-<div style="text-align:center;">
-    <img src="../graph/file_untitled.png" alt="file_untitled" style="margin: 0 auto; zoom: 80%;"/>
 </div>
-
-<div style="text-align:center;">
-    <img src="../graph/file_not_saved.png" alt="file_not_saved" style="margin: 0 auto; zoom: 80%;"/>
-</div>
-
-请记得保存代码文件，否则在计算机看来就是没有任何代码！
-
-文件命名请使用全英文，最好能表达这个代码文件的功能（强烈不建议叫 `Untitled-1`），并且加上 `.c` 的后缀名。
-
-## Code Runner 报错
-
-不推荐使用 Code Runner，因此不提供 Code Runner 报错的解决方案。推荐在终端（Windows Terminal 或者 VSCode 的内置终端都行）自己编译运行文件。
-
-## gcc 编译后没有执行
-
-例如代码文件为 `test.c`，使用 gcc 编译
-```
-gcc test.c
-```
-
-有同学表示输入了这个命令之后为什么没有提示输入或者进行输出，这是因为这条命令的作用是编译生成可执行文件 `a.exe`，接下来你想要真正实现功能需要执行它，即
-```
-./a.exe
-```
-
-## 我急着让代码跑起来
-
-请耐心配置环境，至少[装完 gcc](../env/C_compiler/)。装完 gcc 后，在 D 盘创建空文件夹 test。
-
-打开 VSCode，按以下步骤选择打开文件夹，打开空文件夹 test。
-
-<div style="text-align:center;">
-    <img src="../graph/open_files.png" alt="open_files" style="margin: 0 auto; zoom: 80%;"/>
-</div>
-
-新建文件，命名为 `a.c`
-
-<div style="text-align:center;">
-    <img src="../graph/create_file.png" alt="create_file" style="margin: 0 auto; zoom: 80%;"/>
-</div>
-
-在 `a.c` 中写代码，写完代码后终端-新建终端
-
-<div style="text-align:center;">
-    <img src="../graph/create_terminal.png" alt="create_terminal" style="margin: 0 auto; zoom: 80%;"/>
-</div>
-
-在终端中输入 `gcc a.c`，回车，发现左侧生成了 `a.exe`（Windows 系统下，相信 macOS 用户和 WSL 用户不需要看这个保姆式教程）
-
-<div style="text-align:center;">
-    <img src="../graph/gcc_a_c.png" alt="gcc_a_c" style="margin: 0 auto; zoom: 80%;"/>
-</div>
-
-再在终端输入 `./a.exe`，就会发现运行成功。
-
-<div style="text-align:center;">
-    <img src="../graph/execute_a_exe.png" alt="execute_a_exe" style="margin: 0 auto; zoom: 80%;"/>
-</div>
-
-这样就成功让代码跑起来了。
