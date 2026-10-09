@@ -60,6 +60,7 @@ markdown_extensions:
   - admonition # mkdocs 警告框
   - md_in_html # 脚注
   - meta # 自定义文章元数据
+  - pymdownx.keys # 键盘按键
   - pymdownx.caret # 下划线
   - pymdownx.mark # 文本高亮
   - pymdownx.tilde # 删除线

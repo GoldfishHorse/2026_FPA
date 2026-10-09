@@ -131,6 +131,9 @@ Xcode <img src="https://developer.apple.com/assets/elements/icons/xcode-s-dark/x
 
 VS Code 跨平台、插件丰富，今后的课程和项目中也能继续使用，因此比较推荐同学们尝试。但是它本身**只是编辑器**，因此需要再安装 **C/C++ 扩展和编译器**。
 
+!!! warning
+    请注意，Visual Studio Code <img src="https://code.visualstudio.com/assets/branding/code-stable.png" alt="VSC" width="24" height="24" style="vertical-align: middle;">  **不是** Visual Studio<img src="https://images.icon-icons.com/112/PNG/512/visual_studio_18908.png" alt="VS" width="24" height="24" style="vertical-align: middle;"> 。不要弄混了，不要用后者。
+
 ### 1. 安装 VS Code 和 C/C++ 扩展
 
 从 [VS Code 官网](https://code.visualstudio.com/)  下载对应系统的安装包。Windows 安装程序中建议勾选“添加到 PATH”和“将 Code 注册为受支持的文件类型的编辑器”。
