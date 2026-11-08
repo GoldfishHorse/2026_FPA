@@ -78,7 +78,7 @@ int test_me(int a, const char *s);
 
 ### 一般原则
 - 在做除法之前，想一下除数是否可能为 0？是否会导致溢出？
-- 在引用一个指针的之前（例如 `*p` 或者 `p->XXX`）时， `p` 是否可能是空指针？
+- 在引用一个指针（例如 `*p` 或者 `p->XXX`）之前， `p` 是否可能是空指针？
 
 ### 函数
 
@@ -124,7 +124,6 @@ int test_me(int a, const char *s);
 - [Linux kernel coding style](https://www.kernel.org/doc/html/latest/process/coding-style.html)
 - [Nginx Development Guide: Code style](https://nginx.org/en/docs/dev/development_guide.html#code_style)
 - [SEI CERT C Coding Standard](https://wiki.sei.cmu.edu/confluence/display/c/SEI+CERT+C+Coding+Standard)
-- [WG14：C 语言标准工作组](https://www.open-std.org/jtc1/sc22/wg14/)
 
 反面示例：
 

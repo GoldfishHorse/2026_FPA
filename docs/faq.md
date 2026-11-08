@@ -5,7 +5,7 @@
     在向他人提问之前，请注意：
 
     + 是否有尝试搜索相关的问题？
-        —— 优先**积极搜索**，bing、google、[stackoverflow](https://stackoverflow.com/) 经常可以找到答案。
+        —— 优先**积极搜索**，bing、google、[stackoverflow](https://stackoverflow.com/) 经常可以找到答案。见[关于搜索引擎](#search-engine)。
         （或许初学时百度百科、百度知道、CSDN 能够给你一些似乎还行的指引，但是随着你逐渐熟练，你会发现他们带给你的坑将远比帮助更多。）
     + [提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md)
     + 【新生宝典】不要再拍屏了！新生大学习之如何正确地截图 https://www.cc98.org/topic/6265782 复制本链接到浏览器或者打开【CC98】微信小程序查看~
@@ -67,7 +67,7 @@ C# 是另一种语言，也不要和 C++ 或 C 搞混了。
 
 因为“本地能跑”只说明它在你电脑的环境下、你试的那组输入下没崩。
 
-例如，对某些实际上错误的写法（例如函数在声明之前调用），你电脑上的编译器可能会放你一马，但是 但 PTA 不会惯着你的程序。例如对未初始化的变量 `int a;`，你的编译器可能会默认把 a 初始化为 0，但 PTA 不一定。
+例如，对某些实际上错误的写法（例如函数在声明之前调用），你电脑上的编译器可能会放你一马，但 PTA 不会。例如对未初始化的变量 `int a;`，你的编译器可能会默认把 a 初始化为 0，但 PTA 不一定。
 
 此外，除了题目描述中的数据外，PTA 系统还会使用多组不同的、有挑战性的数据测试你提交的程序。请检查你的程序，确保它能正确地处理题目描述范围内的所有情况。
 
@@ -88,3 +88,26 @@ C# 是另一种语言，也不要和 C++ 或 C 搞混了。
 ![](./graph/FAQ_Programming.jpg)
 
 </div>
+
+## 在哪里可以练习编程题？
+
+可以在 PTA 首页的习题集上做一做简单的练习，例如[基础编程习题集](https://pintia.cn/problem-sets/14/exam/overview) 或者 [ZOJ Problem Set](https://pintia.cn/problem-sets/91827364500/exam/problems/type/7)。
+
+除此之外，还有一些在线编程评测平台（Online Judge），里面往往有丰富的题目，可以让学生、程序员或者求职者练习编程、算法和数据结构。推荐 [LeetCode](https://leetcode.cn/)。
+
+<a id="search-engine"></a>
+
+## 关于搜索引擎
+
+关于如何使用搜索引擎，每个人有不同的习惯，但至少要彻底离开百度，百度是一个充满诈骗和广告的东西，几乎难以得到任何有用信息。建议使用[必应（bing）](https://www.bing.com/)搜索或者[谷歌（google）](https://www.google.com/)搜索（条件允许的话），其中必应搜索分为国内版和国外版，国内版方便检索中文内容，国际版则使用英文搜索，搜索英文网页效果很好。
+
+其次，如果你想要更高级、更精确的搜索，那么你需要善用搜索引擎的一些独特功能，比如必应搜索：
+
++ [advanced-search-options](https://support.microsoft.com/en-us/bing/advanced-search-options)
++ [advanced-search-keywords](https://support.microsoft.com/en-us/bing/advanced-search-keywords)
+
+另外，作为一个计算机人，一定要学会找官方的东西，比如官方网站、官方文档。
+
+## `int *p[]` 和 `int (*p)[]` 如何区分？
+
+见[阅读复杂声明](misc/c-types.md#complex-declarations)。

@@ -20,10 +20,11 @@
 
 - [计算机教育中缺失的一课](https://missing-semester-cn.github.io/)
 - [CPPreference - C](https://en.cppreference.com/c)： C 语言参考手册，可以查找语法和标准库的用法等。
+- [CS 自学指南](https://csdiy.wiki/)
+- [用十年时间自学编程](https://www.norvig.com/21-days.html) by Peter Norvig
 
 - 学长学姐的笔记
     - [如何让自己看上去、闻上去都像一个 CS 人](https://www.cc98.org/topic/5370849) by HobbitQia
     - [zju-cs 资源索引汇总项目](https://isshikihugh.github.io/zju-cs-asio/) by Isshiki 修
     - [浙江大学竺可桢学院辅学计划站点 - 程序设计辅学](https://ckc-agc.bowling233.top/programming/) by bowling233 等
-    - [鹤翔万里的笔记本](https://note.tonycrane.cc/) by TonyCrane
-    - [ZhouTimeMachine 整理的程算易错题](https://zhoutimemachine.github.io/note/courses/C-review/)
+    - [鹤翔万里的笔记本](https://note.tonycrane.cc/cs/pl/c_cpp/c/) by TonyCrane

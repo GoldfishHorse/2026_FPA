@@ -14,6 +14,13 @@ nav:
   - 开发环境安装与第一次编译运行: env/index.md
   - 调试技术: debug/index.md
   - 编程规范: style/index.md
+  - Shell 基础与 CLI 工具入门:
+      - 终端和 Shell 基础: shell/index.md
+      - 包管理器: shell/package-manager.md
+      - Vim: shell/vim.md
+      - GNU Make: shell/make.md
+  - 杂谈:
+      - 浅谈 C 语言的数据类型: misc/c-types.md
   - FAQ: faq.md
 
 theme:
@@ -65,7 +72,11 @@ markdown_extensions:
   - pymdownx.mark # 文本高亮
   - pymdownx.tilde # 删除线
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.critic
   - pymdownx.arithmatex: # 数学公式的 TeX 语法支持
       generic: true
@@ -84,7 +95,6 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.magiclink
   - pymdownx.smartsymbols
-  - pymdownx.superfences
   - tables
   # - toc: # 大纲
   #     permalink: true
