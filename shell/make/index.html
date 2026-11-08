@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="浙江大学 2026-2027 秋冬《程序设计与算法基础》课程网站" name="description"/>
+<link href="https://goldfishhorse.github.io/2026_FPA/shell/make/" rel="canonical"/>
+<link href="../vim/" rel="prev"/>
+<link href="../../misc/c-types/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.8.1" name="generator"/>
+<title>GNU Make - ZJU FPA 2026 Fall</title>
+<link href="../../assets/stylesheets/main.57a0d79d.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.fb2fffe2.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../css/heti.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/utils/katex.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&amp;display=fallback" rel="stylesheet"/>
+<link href="../../css/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#gnu-make">
+          跳转至
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="页眉" class="md-header__inner md-grid">
+<a aria-label="ZJU FPA 2026 Fall" class="md-header__button md-logo" data-md-component="logo" href="../.." title="ZJU FPA 2026 Fall">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            ZJU FPA 2026 Fall
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              GNU Make
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="夜间模式" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="夜间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+</label>
+<input aria-label="日间模式" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="teal" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="日间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="查找" class="md-search__options">
+<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" title="清空当前内容" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/GoldfishHorse/2026_FPA/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GoldfishHorse/2026_FPA
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="导航栏" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="ZJU FPA 2026 Fall" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="ZJU FPA 2026 Fall">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    ZJU FPA 2026 Fall
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/GoldfishHorse/2026_FPA/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GoldfishHorse/2026_FPA
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    
+  
+    主页
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../env/">
+<span class="md-ellipsis">
+    
+  
+    开发环境安装与第一次编译运行
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../debug/">
+<span class="md-ellipsis">
+    
+  
+    调试技术
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../style/">
+<span class="md-ellipsis">
+    
+  
+    编程规范
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Shell 基础与 CLI 工具入门
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Shell 基础与 CLI 工具入门
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    
+  
+    终端和 Shell 基础
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../package-manager/">
+<span class="md-ellipsis">
+    
+  
+    包管理器
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../vim/">
+<span class="md-ellipsis">
+    
+  
+    Vim
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    GNU Make
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    GNU Make
+  
+
+    
+  </span>
+</a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#makefile">
+<span class="md-ellipsis">
+      
+        Makefile 的规则
+      
+    </span>
+</a>
+<nav aria-label="Makefile 的规则" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      
+        伪目标
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      
+        变量
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      
+        一个例子
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#make">
+<span class="md-ellipsis">
+      
+        运行 Make
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      
+        常用命令行选项
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      
+        参考阅读
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    杂谈
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    杂谈
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../misc/c-types/">
+<span class="md-ellipsis">
+    
+  
+    浅谈 C 语言的数据类型
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../faq/">
+<span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#makefile">
+<span class="md-ellipsis">
+      
+        Makefile 的规则
+      
+    </span>
+</a>
+<nav aria-label="Makefile 的规则" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      
+        伪目标
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      
+        变量
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      
+        一个例子
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#make">
+<span class="md-ellipsis">
+      
+        运行 Make
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      
+        常用命令行选项
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      
+        参考阅读
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="gnu-make">GNU Make</h1>
+<p>我们可以用 <code>gcc a.c -o a</code> 编译一个<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>程序。假如项目中只有 <code>a.c</code> 一个文件，手动执行命令确实很方便；但如果有多个 <code>.c</code> 和 <code>.h</code> 文件，输入命令会逐渐变得繁琐。</p>
+<p><a href="https://www.gnu.org/software/make"><span>GNU Make<span class="heti-spacing"> </span></span></a>是一个自动化构建工具，类似工具还有<a href="https://cmake.org/"><span class="heti-skip"><span class="heti-spacing"> </span>CMake<span class="heti-spacing"> </span></span></a>和<a href="https://xmake.io/"><span class="heti-skip"><span class="heti-spacing"> </span>XMake<span class="heti-spacing"> </span></span></a>等。我们在名为 <strong>Makefile</strong> 的文件中描述“怎样产生目标程序”“目标依赖哪些文件”“需要运行什么命令”，随后用 <code>make</code> 命令执行构建。</p>
+<p><span>Linux<span class="heti-spacing"> </span></span>内核等大型项目长期使用<span class="heti-skip"><span class="heti-spacing"> </span>Make<span class="heti-spacing"> </span></span>构建系统。<span>Make<span class="heti-spacing"> </span></span>也可以组织测试、生成文档、打包、部署等任务；只要任务能够通过命令完成，就可能适合写进<span><span class="heti-spacing"> </span>Makefile</span>。有文件间的依赖关系时，<span>Make<span class="heti-spacing"> </span></span>通常比一串简单的<span class="heti-skip"><span class="heti-spacing"> </span>Shell<span class="heti-spacing"> </span></span>命令更方便、更容易维护。</p>
+<div align="center">
+<img alt="Makefile 中的构建依赖关系" src="https://raw.githubusercontent.com/TonyCrane/PracticalSkillsTutorial/master/slides/src/lec0/makefile.png"/>
+</div>
+<h2 id="makefile"><span>Makefile<span class="heti-spacing"> </span></span>的规则</h2>
+<p><span>Makefile<span class="heti-spacing"> </span></span>最基本的规则结构为：</p>
+<div class="language-make highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nf">目标</span><span class="o">:</span><span class="w"> </span>依赖项1 依赖项2 ...
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span>需要执行的命令
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span>另一条命令
+</span></code></pre></div></td></tr></table></div>
+<p>三部分分别叫<span><span class="heti-spacing"> </span>target</span>（目标<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、prerequisites（先决条件或依赖项<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、recipe（命令<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。当需要生成目标，而且它不存在或它所依赖的文件发生改变时，<span>Make<span class="heti-spacing"> </span></span>会决定执行哪些构建步骤。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span>recipe<span class="heti-spacing"> </span></span>命令行必须以<span class="heti-skip"><span class="heti-spacing"> </span>Tab<span class="heti-spacing"> </span></span>字符开头，不能用空格代替。</p>
+</div>
+<h3 id="_1">伪目标</h3>
+<p><span>Makefile<span class="heti-spacing"> </span></span>支持<strong>伪目标</strong>（phony target<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。例如，<code>clean</code> 往往只是一个“清理构建文件”的操作名称，并不代表要生成名为 <code>clean</code> 的文件：</p>
+<div class="language-make highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">clean</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="nf">clean</span><span class="o">:</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span>rm<span class="w"> </span>-f<span class="w"> </span>main.o<span class="w"> </span>aux.o<span class="w"> </span>main.out
+</span></code></pre></div></td></tr></table></div>
+<p>命令行还可以添加前缀：以 <code>@</code> 开头时，执行前不把命令本身打印到终端；以 <code>-</code> 开头时，即使当前命令失败，也不立即因此停止构建。</p>
+<h2 id="_2">变量</h2>
+<p><span>Makefile<span class="heti-spacing"> </span></span>可以定义变量，减少重复输入。它与<span class="heti-skip"><span class="heti-spacing"> </span>Shell<span class="heti-spacing"> </span></span>变量的语法和求值方式有所不同，常见赋值方式有四种：</p>
+<table>
+<thead>
+<tr>
+<th>语法</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VAR = value</code></td>
+<td>递归展开变量，通常在引用时展开右侧内容</td>
+</tr>
+<tr>
+<td><code>VAR := value</code></td>
+<td>简单展开变量，赋值时立即展开右侧内容</td>
+</tr>
+<tr>
+<td><code>VAR ?= value</code></td>
+<td>仅当变量未被定义时设为该值</td>
+</tr>
+<tr>
+<td><code>VAR += value</code></td>
+<td>将内容追加到变量已有的值之后</td>
+</tr>
+</tbody>
+</table>
+<p>引用变量时可写 <code>$(VAR)</code> 或 <code>${VAR}</code>。<span>Make<span class="heti-spacing"> </span></span>会把这些引用展开为相应内容，可简单理解为一种文本替换机制。还可以通过 <code>$(shell command)</code> 获得<span class="heti-skip"><span class="heti-spacing"> </span>Shell<span class="heti-spacing"> </span></span>命令的输出并用于变量展开。<span>Make<span class="heti-spacing"> </span></span>自带一些有用的变量，比如用于递归调用<span class="heti-skip"><span class="heti-spacing"> </span>Make<span class="heti-spacing"> </span></span>的 <code>$(MAKE)</code>，也可以获取环境中的 <code>$(PATH)</code>。</p>
+<h2 id="_3">一个例子</h2>
+<p>假设目录中有 <code>main.c</code> 和 <code>aux.c</code>，我们希望把它们分别编译为 <code>.o</code> 文件，再链接得到可执行程序 <code>main.out</code>。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>.o</code> 指的是是目标文件，由单个<span class="heti-skip"><span class="heti-spacing"> </span>.c<span class="heti-spacing"> </span></span>文件编译得到，但还不是完整程序。例如 <code>main.c</code> 调用了 <code>aux.c</code> 里的函数时，<code>main.o</code> 里只有“我要调用这个函数”的记录，而这个函数本身还没有确定。<code>aux.o</code> 里才有该函数的实现。链接器负责把两者合起来，解析这些引用。</p>
+<p>一个项目通常有多个源文件，如果只修改其中一个，就对所有源文件重新执行编译、链接步骤，就太浪费时间了。因此，多一个“生成中间文件”的步骤，可以让我们在只修改其中一个源文件时，就无需再重新编译其它文件。例如，如果我们修改了 <code>aux.c</code>而没改 <code>main.c</code>，只需要再生成 <code>aux.o</code> ，将之与已经有的 <code>main.o</code> 重新合起来就行了，不用再编译 <code>main.o</code>。</p>
+</div>
+<pre class="mermaid"><code>flowchart LR
+    main_c["main.c"] --&gt;|"gcc -c main.c -o main.o"| main_o["main.o"]
+    aux_c["aux.c"] --&gt;|"gcc -c aux.c -o aux.o"| aux_o["aux.o"]
+
+    main_o --&gt; link["gcc main.o aux.o -o main.out"]
+    aux_o --&gt; link
+
+    link --&gt; main_out["main.out"]</code></pre>
+<p>我们编写出下面的<span><span class="heti-spacing"> </span>Makefile</span>：</p>
+<div class="language-make highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span>
+<span class="normal"><a href="#__codelineno-2-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nv">CFLAGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-std<span class="o">=</span>c99
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="nf">main.out</span><span class="o">:</span><span class="w"> </span><span class="n">main</span>.<span class="n">o</span> <span class="n">aux</span>.<span class="n">o</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span>gcc<span class="w"> </span>$^<span class="w"> </span>-o<span class="w"> </span><span class="nv">$@</span><span class="w"> </span><span class="k">$(</span>CFLAGS<span class="k">)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="nf">%.o</span><span class="o">:</span><span class="w"> </span>%.<span class="n">c</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">    </span>gcc<span class="w"> </span>-c<span class="w"> </span>$&lt;<span class="w"> </span>-o<span class="w"> </span><span class="nv">$@</span><span class="w"> </span><span class="k">$(</span>CFLAGS<span class="k">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>它包含一项变量定义和两条规则：</p>
+<ul>
+<li>变量 <code>CFLAGS</code> 的值是 <code>-std=c99</code>；</li>
+<li>第一条规则说明，产生 <code>main.out</code> 依赖 <code>main.o</code> 和 <code>aux.o</code>，需要调用<span class="heti-skip"><span class="heti-spacing"> </span>GCC<span class="heti-spacing"> </span></span>把两个目标文件链接起来；</li>
+<li>第二条规则 <code>%.o: %.c</code> 是“模式规则”，表示从对应的 <code>.c</code> 文件生成 <code>.o</code> 文件，例如 <code>main.c → main.o</code>、<code>aux.c → aux.o</code>。</li>
+</ul>
+<p>其中有三个常用的<strong>自动变量</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>在这份<span class="heti-skip"><span class="heti-spacing"> </span>Makefile<span class="heti-spacing"> </span></span>中的含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$@</code></td>
+<td>当前规则的目标</td>
+</tr>
+<tr>
+<td><code>$^</code></td>
+<td>当前规则的全部依赖项</td>
+</tr>
+<tr>
+<td><code>$&lt;</code></td>
+<td>当前规则的第一个依赖项</td>
+</tr>
+</tbody>
+</table>
+<p>以第一条规则为例，<code>gcc $^ -o $@ $(CFLAGS)</code> 展开后类似于：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>gcc<span class="w"> </span>main.o<span class="w"> </span>aux.o<span class="w"> </span>-o<span class="w"> </span>main.out<span class="w"> </span>-std<span class="o">=</span>c99
+</span></code></pre></div></td></tr></table></div>
+<p>第二条规则生成 <code>main.o</code> 时，相当于执行：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>gcc<span class="w"> </span>-c<span class="w"> </span>main.c<span class="w"> </span>-o<span class="w"> </span>main.o<span class="w"> </span>-std<span class="o">=</span>c99
+</span></code></pre></div></td></tr></table></div>
+<p>修改某个源文件后再次执行 <code>make</code>，<span>Make<span class="heti-spacing"> </span></span>会根据文件依赖与时间戳判断需要重新构建哪些目标。对于文件较多的项目，这比手动反复拼接<span class="heti-skip"><span class="heti-spacing"> </span>GCC<span class="heti-spacing"> </span></span>命令更容易管理。</p>
+<h2 id="make">运行<span><span class="heti-spacing"> </span>Make</span></h2>
+<p>直接执行 <code>make</code> 时，通常会使用<span class="heti-skip"><span class="heti-spacing"> </span>Makefile<span class="heti-spacing"> </span></span>的第一个目标作为默认目标；也可以明确写出希望执行的一个或多个目标：</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>make
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>make<span class="w"> </span>main.out
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a>make<span class="w"> </span>a.o<span class="w"> </span>b.o<span class="w"> </span>c.o
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a>make<span class="w"> </span>clean
+</span></code></pre></div></td></tr></table></div>
+<p>还可以在命令行覆盖变量的值：</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>make<span class="w"> </span>a.o<span class="w"> </span><span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">"-std=c11 -Wall"</span>
+</span></code></pre></div></td></tr></table></div>
+<p>一般情况下，变量值的优先关系是“命令行指定<span class="heti-skip"><span class="heti-spacing"> </span>&gt; Makefile<span class="heti-spacing"> </span></span>中定义<span class="heti-skip"><span class="heti-spacing"> </span>&gt;<span class="heti-spacing"> </span></span>环境变量”。<span>GNU Make<span class="heti-spacing"> </span></span>还支持 <code>override</code> 和 <code>-e</code> 等影响优先级的机制。日常使用中，命令行赋值最适合临时切换编译选项。</p>
+<h2 id="_4">常用命令行选项</h2>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>make -f FILE</code></td>
+<td>明确指定要使用的<span class="heti-skip"><span class="heti-spacing"> </span>Makefile<span class="heti-spacing"> </span></span>文件名</td>
+</tr>
+<tr>
+<td><code>make -n</code></td>
+<td>只打印将运行的命令，不实际执行，称为<span><span class="heti-spacing"> </span>dry-run</span></td>
+</tr>
+<tr>
+<td><code>make -j N</code></td>
+<td>最多并行运行<span class="heti-skip"><span class="heti-spacing"> </span>N<span class="heti-spacing"> </span></span>个构建任务，常用于加速编译</td>
+</tr>
+<tr>
+<td><code>make -k</code></td>
+<td>某个目标出错后，尽量继续构建其他不依赖该错误结果的目标</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">参考阅读</h2>
+<ul>
+<li><a href="https://seisman.github.io/how-to-write-makefile/">《和我一起写<span><span class="heti-spacing"> </span>Makefile</span>》</a></li>
+<li><a href="https://www.gnu.org/software/make/manual/make.html"><span>GNU Make<span class="heti-spacing"> </span></span>官方手册</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/618350718">写给初学者的<span class="heti-skip"><span class="heti-spacing"> </span>Makefile<span class="heti-spacing"> </span></span>入门指南<span class="heti-skip"><span class="heti-spacing"> </span>-<span class="heti-spacing"> </span></span>吉平<span class="heti-skip"><span class="heti-spacing"> </span>.<span class="heti-spacing"> </span></span>集的文章<span class="heti-skip"><span class="heti-spacing"> </span>-<span class="heti-spacing"> </span></span>知乎</a></li>
+</ul>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<nav aria-label="页脚" class="md-footer__inner md-grid">
+<a aria-label="上一页: Vim" class="md-footer__link md-footer__link--prev" href="../vim/">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                上一页
+              </span>
+<div class="md-ellipsis">
+                Vim
+              </div>
+</div>
+</a>
+<a aria-label="下一页: 浅谈 C 语言的数据类型" class="md-footer__link md-footer__link--next" href="../../misc/c-types/">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                下一页
+              </span>
+<div class="md-ellipsis">
+                浅谈 C 语言的数据类型
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2026 贺俊哲；基于 <a href="https://github.com/ZhouTimeMachine/2023_FPA" rel="noopener" target="_blank">ZhouTimeMachine/2023_FPA</a> 修改
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.footer"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+<script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+<script src="../../js/katex.js"></script>
+</body>
+</html>

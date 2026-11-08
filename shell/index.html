@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="浙江大学 2026-2027 秋冬《程序设计与算法基础》课程网站" name="description"/>
+<link href="https://goldfishhorse.github.io/2026_FPA/shell/" rel="canonical"/>
+<link href="../style/" rel="prev"/>
+<link href="package-manager/" rel="next"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.8.1" name="generator"/>
+<title>终端和 Shell 基础 - ZJU FPA 2026 Fall</title>
+<link href="../assets/stylesheets/main.57a0d79d.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.fb2fffe2.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../css/heti.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/utils/katex.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&amp;display=fallback" rel="stylesheet"/>
+<link href="../css/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#shell">
+          跳转至
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="页眉" class="md-header__inner md-grid">
+<a aria-label="ZJU FPA 2026 Fall" class="md-header__button md-logo" data-md-component="logo" href=".." title="ZJU FPA 2026 Fall">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            ZJU FPA 2026 Fall
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              终端和 Shell 基础
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="夜间模式" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="夜间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+</label>
+<input aria-label="日间模式" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="teal" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="日间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="查找" class="md-search__options">
+<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" title="清空当前内容" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/GoldfishHorse/2026_FPA/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GoldfishHorse/2026_FPA
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="导航栏" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="ZJU FPA 2026 Fall" class="md-nav__button md-logo" data-md-component="logo" href=".." title="ZJU FPA 2026 Fall">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    ZJU FPA 2026 Fall
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/GoldfishHorse/2026_FPA/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GoldfishHorse/2026_FPA
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    
+  
+    主页
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../env/">
+<span class="md-ellipsis">
+    
+  
+    开发环境安装与第一次编译运行
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../debug/">
+<span class="md-ellipsis">
+    
+  
+    调试技术
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../style/">
+<span class="md-ellipsis">
+    
+  
+    编程规范
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Shell 基础与 CLI 工具入门
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Shell 基础与 CLI 工具入门
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    终端和 Shell 基础
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    终端和 Shell 基础
+  
+
+    
+  </span>
+</a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      
+        为什么需要学习命令行
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#terminal-shell">
+<span class="md-ellipsis">
+      
+        Terminal 和 Shell 的区别
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#shell_1">
+<span class="md-ellipsis">
+      
+        Shell 操作基础
+      
+    </span>
+</a>
+<nav aria-label="Shell 操作基础" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      
+        命令提示符与工作目录
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      
+        路径、相对路径与绝对路径
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      
+        文件与目录的创建、查看、复制和删除
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      
+        查看文件内容
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      
+        其他基础命令
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+<span class="md-ellipsis">
+      
+        重定向和管道
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#path">
+<span class="md-ellipsis">
+      
+        环境变量、PATH 与配置文件
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cli">
+<span class="md-ellipsis">
+      
+        值得尝试的 CLI 工具
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="package-manager/">
+<span class="md-ellipsis">
+    
+  
+    包管理器
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="vim/">
+<span class="md-ellipsis">
+    
+  
+    Vim
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="make/">
+<span class="md-ellipsis">
+    
+  
+    GNU Make
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    杂谈
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    杂谈
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../misc/c-types/">
+<span class="md-ellipsis">
+    
+  
+    浅谈 C 语言的数据类型
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../faq/">
+<span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      
+        为什么需要学习命令行
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#terminal-shell">
+<span class="md-ellipsis">
+      
+        Terminal 和 Shell 的区别
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#shell_1">
+<span class="md-ellipsis">
+      
+        Shell 操作基础
+      
+    </span>
+</a>
+<nav aria-label="Shell 操作基础" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      
+        命令提示符与工作目录
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      
+        路径、相对路径与绝对路径
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      
+        文件与目录的创建、查看、复制和删除
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      
+        查看文件内容
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      
+        其他基础命令
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+<span class="md-ellipsis">
+      
+        重定向和管道
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#path">
+<span class="md-ellipsis">
+      
+        环境变量、PATH 与配置文件
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cli">
+<span class="md-ellipsis">
+      
+        值得尝试的 CLI 工具
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="shell">终端和<span class="heti-skip"><span class="heti-spacing"> </span>Shell<span class="heti-spacing"> </span></span>基础</h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>本文整理自浙江大学竺可桢学院<span class="heti-skip"><span class="heti-spacing"> </span>2023<span class="heti-spacing"> </span></span>年秋冬学期“实用技能拾遗”第一讲《<span>Shell<span class="heti-spacing"> </span></span>基础及<span class="heti-skip"><span class="heti-spacing"> </span>CLI<span class="heti-spacing"> </span></span>工具推荐<heti-adjacent class="heti-adjacent-half">》</heti-adjacent>。原讲者：<a href="https://github.com/45gfg9">@45gfg9</a>；系列课程项目：<a href="https://github.com/TonyCrane">@TonyCrane</a>。参见<a href="https://slides.tonycrane.cc/PracticalSkillsTutorial/2023-fall-ckc/lec1/#/">原版幻灯片</a>、<a href="https://github.com/TonyCrane/PracticalSkillsTutorial/blob/master/slides/src/lec1.md">幻灯片<span class="heti-skip"><span class="heti-spacing"> </span>Markdown<span class="heti-spacing"> </span></span>源码</a>与<a href="https://www.bilibili.com/video/BV1ry4y1A7qo/">讲座回放<span><span class="heti-spacing"> </span>BV1ry4y1A7qo</span></a>。</p>
+<p><img alt="讲座原版封面" src="https://raw.githubusercontent.com/TonyCrane/PracticalSkillsTutorial/master/slides/src/lec1/cover.png" style="display: block; margin: 0 auto;"/></p>
+</div>
+<!-- 在学习完本文后，进一步的内容还有：
+
+- [包管理器](package-manager.md)
+- [Vim](vim.md)
+- [GNU Make](make.md) -->
+<h2 id="_1">为什么需要学习命令行</h2>
+<p>在图形化桌面中，我们习惯用鼠标双击文件、打开应用、复制和移动文件，这种交互方式称为<strong>图形用户界面</strong>（Graphical User Interface，GUI<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。早期操作系统没有图形界面，与计算机交互主要依靠<strong>命令行界面</strong>（Command-Line Interface，CLI<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：在<strong>终端</strong>（Terminal）中输入命令，让计算机执行操作并返回结果。例如下图中的<span><span class="heti-spacing"> </span>DEC VT100</span>。</p>
+<div align="center">
+<img alt="DEC VT100 终端" src="https://raw.githubusercontent.com/TonyCrane/PracticalSkillsTutorial/master/slides/src/lec1/VT100-terminal.png"/>
+<p><em><span>VT100<span class="heti-spacing"> </span></span>图片来源：Gorthmog，CC BY-SA 4.0，<a href="https://commons.wikimedia.org/wiki/File:DEC_VT100_terminal_transparent.png">Wikimedia Commons</a>。</em></p>
+</div>
+<p>即使是在现代计算机中，掌握命令行也十分有助于我们方便、高效地执行各种操作：</p>
+<ul>
+<li>管理文件，包括搜索、移动、复制、编辑文件，以及从网络上下载文件；</li>
+<li>编译程序；</li>
+<li>处理文本，完成增删改查；</li>
+<li>把经常重复的步骤组织成自动化流程；</li>
+<li>通过<span class="heti-skip"><span class="heti-spacing"> </span>SSH<span class="heti-spacing"> </span></span>登录没有图形桌面的远程服务器。</li>
+</ul>
+<p>作为一个<span class="heti-skip"><span class="heti-spacing"> </span>CS<span class="heti-spacing"> </span></span>人，终端可以说是我们日常必不可少的一部分。</p>
+<p>如果你在<a href="../env/">开发环境安装与第一次编译运行</a>中选择了用<span class="heti-skip"><span class="heti-spacing"> </span>VS Code<span class="heti-spacing"> </span></span>编辑代码、用<span class="heti-skip"><span class="heti-spacing"> </span>GCC<span class="heti-spacing"> </span></span>编译代码，那么你应该已经体验过终端交互。假设当前目录中有一个 <code>a.c</code> 文件：</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="n">puts</span><span class="p">(</span><span class="s">"Hello world!"</span><span class="p">);</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>在终端中可以查看源码、编译并运行：</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>cat<span class="w"> </span>a.c<span class="w">           </span><span class="c1"># 显示文件内容</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>gcc<span class="w"> </span>a.c<span class="w"> </span>-o<span class="w"> </span>a<span class="w">      </span><span class="c1"># 编译 a.c，生成可执行文件 a</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a>./a<span class="w">               </span><span class="c1"># 执行当前目录下的 a</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="c1"># 输出：Hello world!</span>
+</span></code></pre></div></td></tr></table></div>
+<p>这里有三个命令：<code>cat</code> 查看源文件 <code>a.c</code> 的内容；<code>gcc</code> 将源文件编译为可执行文件；<code>./a</code> 运行得到的程序。</p>
+<h2 id="terminal-shell"><span>Terminal<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>Shell<span class="heti-spacing"> </span></span>的区别</h2>
+<p>一言以蔽之：<strong>Terminal（终端）</strong>提供文字交互界面，而 <strong>Shell</strong> 负责解释命令。</p>
+<p><span>Terminal<span class="heti-spacing"> </span></span>一词原有“终点”的含义。<a href="https://www.etymonline.com/word/terminal"><span>Online Etymology Dictionary<span class="heti-spacing"> </span></span></a>记载，其“用于与计算机通信的设备”这一意义最早见于<span class="heti-skip"><span class="heti-spacing"> </span>1954<span class="heti-spacing"> </span></span>年。早期终端是连接计算机的实体设备，通常具有键盘和显示装置，可输入数据、运行程序并观察结果。</p>
+<p>今天电脑里的终端通常指 <strong>Terminal Emulator（终端模拟器）</strong>：一个负责显示文本、处理键盘输入并管理交互界面的应用。它可以承载一个<span><span class="heti-spacing"> </span>Shell</span>，让我们看到命令提示符和程序输出。</p>
+<div align="center">
+<img alt="终端模拟器示例" src="https://www.tecmint.com/wp-content/uploads/2021/11/Terminator-Linux-Terminal-Emulator-1.png"/>
+</div>
+<p>现代操作系统中基本都自带了终端：</p>
+<ul>
+<li><span>Windows 11<span class="heti-spacing"> </span></span>用户可以使用微软提供的 <em>Windows Terminal</em>；<span>Windows 10<span class="heti-spacing"> </span></span>可以在微软应用商店下载；</li>
+<li><span>Linux<span class="heti-spacing"> </span></span>桌面常见的选择有 <em>GNOME Terminal</em>、<em>Konsole</em>、<em>LXTerminal</em>；</li>
+<li><span>macOS<span class="heti-spacing"> </span></span>自带 <em>Terminal.app</em>，也可安装 <em>iTerm2</em>。</li>
+</ul>
+<p>至于<span><span class="heti-spacing"> </span>Shell</span> ，可以理解为用户与操作系统之间的一层命令解释界面。我们在终端中输入指令后，终端负责把输入交给<span><span class="heti-spacing"> </span>Shell</span>；<span>Shell<span class="heti-spacing"> </span></span>分析命令、查找要执行的程序，配合操作系统启动程序，随后终端显示它的输出。交互流程大概如下：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>用户输入 → Terminal（接收与显示） → Shell（解析命令）
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>                                      ↓
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a>                              操作系统与被执行的程序
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a>                                      ↓
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a>用户看到结果 ← Terminal（显示输出） ← 程序的输出
+</span></code></pre></div></td></tr></table></div>
+<p>常见<span class="heti-skip"><span class="heti-spacing"> </span>Shell<span class="heti-spacing"> </span></span>包括：</p>
+<ul>
+<li>Windows：<code>cmd.exe</code>、Windows PowerShell 5，以及新版跨平台的<span><span class="heti-spacing"> </span>PowerShell 7</span>（<code>pwsh</code><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</li>
+<li>Unix/Linux/macOS<heti-adjacent class="heti-adjacent-half">：</heti-adjacent><code>sh</code>（Bourne Shell<heti-adjacent class="heti-adjacent-half">）</heti-adjacent><heti-adjacent class="heti-adjacent-half">、</heti-adjacent><code>bash</code>（Bourne Again Shell<heti-adjacent class="heti-adjacent-half">）</heti-adjacent><heti-adjacent class="heti-adjacent-half">、</heti-adjacent><code>zsh</code>（Z Shell<heti-adjacent class="heti-adjacent-half">）</heti-adjacent><heti-adjacent class="heti-adjacent-half">、</heti-adjacent><code>fish</code>（Friendly Interactive Shell） 。
+Bash 广泛应用于 Linux，Zsh 自 macOS Catalina 开始成为 macOS 默认交互 Shell。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>大部分<span class="heti-skip"><span class="heti-spacing"> </span>Shell<span class="heti-spacing"> </span></span>的部分语法看起来相似，但并不完全相同。实际输入命令或编写脚本时，应当先确认自己正在使用哪一种<span><span class="heti-spacing"> </span>Shell</span>。</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>如果使用<span><span class="heti-spacing"> </span>Zsh</span>，可以试试<a href="https://ohmyz.sh"><span><span class="heti-spacing"> </span>Oh My Zsh</span></a>，这个工具为<span class="heti-skip"><span class="heti-spacing"> </span>Zsh<span class="heti-spacing"> </span></span>提供主题与插件配置框架，使自定义提示符和功能扩展更加方便。配置可以参考<a href="https://note.tonycrane.cc/cs/tools/shell/"><span class="heti-skip"><span class="heti-spacing"> </span>Tonycrane<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>Shell<span class="heti-spacing"> </span></span>笔记</a>。</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>如果你使用<span><span class="heti-spacing"> </span>PowerShell</span>，建议将<span class="heti-skip"><span class="heti-spacing"> </span>Windows<span class="heti-spacing"> </span></span>自带的<span class="heti-skip"><span class="heti-spacing"> </span>Windows PowerShell 5<span class="heti-spacing"> </span></span>升级至<span><span class="heti-spacing"> </span>PowerShell 7</span>，参见<a href="https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell-on-windows">安装指南</a>。还可以搭配<a href="https://ohmyposh.dev/"><span class="heti-skip"><span class="heti-spacing"> </span>Oh My Posh<span class="heti-spacing"> </span></span></a>使用。</p>
+<p>微软官方为<span class="heti-skip"><span class="heti-spacing"> </span>PowerShell<span class="heti-spacing"> </span></span>提供了详细的<a href="https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/01-getting-started">学习指导</a>和<a href="https://learn.microsoft.com/en-us/powershell/">文档</a>。</p>
+<p><img alt="PowerShell 梗图" src="./graph/powershell_meme.webp" style="display: block; margin: 0 auto;"/></p>
+</div>
+<h2 id="shell_1"><span>Shell<span class="heti-spacing"> </span></span>操作基础</h2>
+<p>这里以<span class="heti-skip"><span class="heti-spacing"> </span>Bash<span class="heti-spacing"> </span></span>为例进行介绍。<span>Bash<span class="heti-spacing"> </span></span>免费、应用广泛，也是许多<span class="heti-skip"><span class="heti-spacing"> </span>Linux<span class="heti-spacing"> </span></span>系统的默认<span><span class="heti-spacing"> </span>Shell</span>。</p>
+<h3 id="_2">命令提示符与工作目录</h3>
+<p>打开终端并启动<span class="heti-skip"><span class="heti-spacing"> </span>Bash<span class="heti-spacing"> </span></span>后，通常会出现一行等待输入的文字，称为<span><span class="heti-spacing"> </span>Prompt</span>（命令提示符<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。它可能包含当前用户名、主机名、所在目录等信息。你可以输入命令，这些命令通常在按下回车后执行。</p>
+<div align="center">
+<img alt="Bash 命令提示符示例" src="./graph/bash_example.jpg"/>
+</div>
+<p>对于初学者，最需要关注的是当前的目录，或者说工作目录（Working Directory<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，即当前<span class="heti-skip"><span class="heti-spacing"> </span>Shell<span class="heti-spacing"> </span></span>所处的位置。同一条相对路径命令，从不同目录执行，会作用于不同文件。</p>
+<p>例如，在不清楚所在目录时输入 <code>rm -rf ./*</code>，可能删除当前目录下全部文件：<code>rm</code> 代表删除（remove）<code>-r</code> 表示递归，<code>-f</code> 表示强制，<code>./*</code> 指向当前目录中匹配到的项目。这个例子是危险操作，切勿复制执行<span><span class="heti-spacing"> </span>:-)</span>。</p>
+<!-- 另一个需要关注的信息是当前用户身份：在 Linux 系统中普通用户与管理员 `root` 的权限不同。使用特权命令前，应该清楚操作对象和后果。 -->
+<p>输入 <code>pwd</code> 可以查询当前目录。</p>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>Linux/macOS<span class="heti-spacing"> </span></span>中，所有文件最终都组织在以 <code>/</code> 为根的目录树下。路径中的 <code>/</code> 是分隔符，个人主目录可以简写为 <code>~</code>。而<span class="heti-skip"><span class="heti-spacing"> </span>Windows<span class="heti-spacing"> </span></span>常见 <code>C:\</code>、<code>D:\</code> 等盘符，并通常使用反斜杠 <code>\</code> 分隔目录。由于路径系统不同，刚开始接触<span class="heti-skip"><span class="heti-spacing"> </span>Linux<span class="heti-spacing"> </span></span>的同学可能会问「为什么没有<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>盘<heti-adjacent class="heti-adjacent-half">」</heti-adjacent>，其实文件树的组织方式不同而已。</p>
+<h3 id="_3">路径、相对路径与绝对路径</h3>
+<p><code>pwd</code> 的全名是 <em>print working directory</em>；<code>cd</code> 是 <em>change directory</em>，用于进入另一个目录。路径既可以从根目录 <code>/</code> 开始写成绝对路径，也可以从当前目录出发写成相对路径。下面是几个特殊的标记：</p>
+<table>
+<thead>
+<tr>
+<th>记号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/</code></td>
+<td>类<span class="heti-skip"><span class="heti-spacing"> </span>Unix<span class="heti-spacing"> </span></span>文件系统的根目录</td>
+</tr>
+<tr>
+<td><code>~</code></td>
+<td>当前用户主目录</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>当前目录</td>
+</tr>
+<tr>
+<td><code>..</code></td>
+<td>上一级目录</td>
+</tr>
+</tbody>
+</table>
+<p>考虑两个例子。</p>
+<p>例子<span><span class="heti-spacing"> </span>1</span>：假设目前位于 <code>/home/hjz/</code>，希望进入 <code>/usr/bin/</code>：</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span>/usr/bin<span class="w">          </span><span class="c1"># 使用绝对路径</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nb">cd</span><span class="w"> </span>../../usr/bin<span class="w">     </span><span class="c1"># 从 /home/hjz/ 使用相对路径</span>
+</span></code></pre></div></td></tr></table></div>
+<p>两行是互相替代的两种写法。</p>
+<p>例子<span><span class="heti-spacing"> </span>2</span>：从 <code>/usr/</code> 进入 <code>/usr/games/</code>：</p>
+<p></p><div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>/usr/games<span class="w">        </span><span class="c1"># 绝对路径</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="nb">cd</span><span class="w"> </span>games<span class="w">             </span><span class="c1"># 相对路径</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="nb">cd</span><span class="w"> </span>./games<span class="w">           </span><span class="c1"># 相对路径，显式写出当前目录</span>
+</span></code></pre></div></td></tr></table></div>
+这三行也是可以互相替代的不同写法。
+<p><code>cd</code> 不带参数通常会返回个人目录。</p>
+<h3 id="_4">文件与目录的创建、查看、复制和删除</h3>
+<p><span>Linux/Unix<span class="heti-spacing"> </span></span>系统通常使用<span><span class="heti-spacing"> </span>directory</span>（目录）这一术语，相当于图形文件管理器中的<span><span class="heti-spacing"> </span>folder</span>（文件夹） 。文件与目录操作主要涉及以下<span class="heti-skip"><span class="heti-spacing"> </span>bash<span class="heti-spacing"> </span></span>命令：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途与常用选项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ls</code></td>
+<td>列出当前目录内容；<code>ls -a</code> 同时显示隐藏文件；<code>ls -l</code> 显示权限、大小、时间等详细信息；也可组合为 <code>ls -la</code></td>
+</tr>
+<tr>
+<td><code>touch file</code></td>
+<td>创建空文件；若文件已有内容，通常更新文件时间戳</td>
+</tr>
+<tr>
+<td><code>mkdir dir</code></td>
+<td>创建目录</td>
+</tr>
+<tr>
+<td><code>cp src dst</code></td>
+<td>复制文件；复制目录可用 <code>cp -r src dst</code> 递归进行</td>
+</tr>
+<tr>
+<td><code>mv src dst</code></td>
+<td>移动或重命名文件、目录</td>
+</tr>
+<tr>
+<td><code>rm files</code></td>
+<td>删除文件；<code>-r</code> 递归处理目录，<code>-f</code> 强制操作，慎用</td>
+</tr>
+<tr>
+<td><code>find path -name 'pattern'</code></td>
+<td>在指定路径下按名称模式搜索文件和目录</td>
+</tr>
+</tbody>
+</table>
+<p>建议大家自己尝试一下下面的例子：</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span>
+<span class="normal"><a href="#__codelineno-6-5">5</a></span>
+<span class="normal"><a href="#__codelineno-6-6">6</a></span>
+<span class="normal"><a href="#__codelineno-6-7">7</a></span>
+<span class="normal"><a href="#__codelineno-6-8">8</a></span>
+<span class="normal"><a href="#__codelineno-6-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>mkdir<span class="w"> </span>cli-practice<span class="w">              </span><span class="c1"># 创建 cli-practice 子目录</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="nb">cd</span><span class="w"> </span>cli-practice<span class="w">                 </span><span class="c1"># 打开 cli-practice 目录</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a>touch<span class="w"> </span>hello.txt<span class="w">                 </span><span class="c1"># 创建 hello.txt 文件</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a>ls<span class="w"> </span>-la<span class="w">                          </span><span class="c1"># 列出当前目录的文件</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a>cp<span class="w"> </span>hello.txt<span class="w"> </span>hello-copy.txt<span class="w">     </span><span class="c1"># 把文件 hello.txt 复制一份 hello-copy.txt</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a>mv<span class="w"> </span>hello-copy.txt<span class="w"> </span>backup.txt<span class="w">    </span><span class="c1"># 重命名 hello-copy.txt 为 backup.txt</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a>mkdir<span class="w"> </span>archive<span class="w">                   </span><span class="c1"># 创建 archive 子目录</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a>mv<span class="w"> </span>backup.txt<span class="w"> </span>archive/<span class="w">          </span><span class="c1"># 把 backup.txt 放到 archive 子目录下</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a>find<span class="w"> </span>.<span class="w"> </span>-name<span class="w"> </span><span class="s1">'*.txt'</span><span class="w">            </span><span class="c1"># 查找 .txt 文件</span>
+</span></code></pre></div></td></tr></table></div>
+<p><code>find</code> 的 <code>*.txt</code> 代表匹配任意以<span class="heti-skip"><span class="heti-spacing"> </span>.txt<span class="heti-spacing"> </span></span>结尾的文件，<code>*</code> 代表通配符。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>不要轻易使用删除命令</strong>。系统中的 <code>rm</code> 不会把文件先放进回收站，<code>rm</code> 删掉的文件就是真没了。</p>
+</div>
+<h3 id="_5">查看文件内容</h3>
+<p>阅读日志、源代码、配置文件，或者查看二进制文件的内容，可以使用下列命令：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用与选项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cat file1 file2 ...</code></td>
+<td>将文件内容输出并依次拼接；<code>cat -n file</code> 显示行号</td>
+</tr>
+<tr>
+<td><code>head file</code></td>
+<td>输出前<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>行；<code>head -n N file</code> 指定显示前<span class="heti-skip"><span class="heti-spacing"> </span>N<span class="heti-spacing"> </span></span>行</td>
+</tr>
+<tr>
+<td><code>tail file</code></td>
+<td>输出后<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>行；<code>tail -n N file</code> 指定显示后<span class="heti-skip"><span class="heti-spacing"> </span>N<span class="heti-spacing"> </span></span>行</td>
+</tr>
+<tr>
+<td><code>more file</code></td>
+<td>分页浏览内容</td>
+</tr>
+<tr>
+<td><code>less file</code></td>
+<td>更灵活的分页浏览，可前后翻页、搜索等；详细选项用 <code>less --help</code> 查询</td>
+</tr>
+<tr>
+<td><code>hexdump file</code></td>
+<td>按十六进制方式查看字节；<code>-C</code> 并排显示十六进制与<span><span class="heti-spacing"> </span>ASCII</span>；<code>-n N</code> 只取前<span class="heti-skip"><span class="heti-spacing"> </span>N<span class="heti-spacing"> </span></span>字节</td>
+</tr>
+</tbody>
+</table>
+<p>在<code>more</code><span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span><code>less</code>进入浏览内容时，还可以进一步操作：空格通常表示向下翻页，回车向下一行，<code>q</code> 退出；<code>less</code> 还可以用 <code>/关键词</code> 搜索。</p>
+<p>对于很大的文件，用 <code>tail</code> 或 <code>head</code> 指令往往比一次性 <code>cat</code> 整个文件更好读。</p>
+<h3 id="_6">其他基础命令</h3>
+<p>以下命令在日常使用中也很常见：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>基本用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>man</code></td>
+<td>查阅命令手册（manual<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，例如 <code>man cat</code></td>
+</tr>
+<tr>
+<td><code>echo</code></td>
+<td>输出文本与变量值，经常与重定向、管道一起使用</td>
+</tr>
+<tr>
+<td><code>whoami</code></td>
+<td>显示当前用户</td>
+</tr>
+<tr>
+<td><code>whereis</code>、<code>which</code>、<code>whence</code></td>
+<td>查找命令及其位置；具体可用性依<span class="heti-skip"><span class="heti-spacing"> </span>Shell<span class="heti-spacing"> </span></span>和系统而定</td>
+</tr>
+<tr>
+<td><code>clear</code></td>
+<td>清空终端当前显示内容</td>
+</tr>
+<tr>
+<td><code>chmod</code></td>
+<td>修改文件访问权限</td>
+</tr>
+<tr>
+<td><code>ps</code></td>
+<td>查看进程信息</td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td>显示日期与时间</td>
+</tr>
+<tr>
+<td><code>kill</code></td>
+<td>向进程发送信号，可用于请求进程终止</td>
+</tr>
+<tr>
+<td><code>grep</code></td>
+<td>搜索文本中匹配指定模式的行</td>
+</tr>
+<tr>
+<td><code>diff</code></td>
+<td>比较文件或目录之间的差异</td>
+</tr>
+<tr>
+<td><code>curl</code></td>
+<td>发送网络请求，例如<span class="heti-skip"><span class="heti-spacing"> </span>HTTP<span class="heti-spacing"> </span></span>请求</td>
+</tr>
+<tr>
+<td><code>wget</code></td>
+<td>下载网络资源</td>
+</tr>
+</tbody>
+</table>
+<p>这些命令有各种参数，初学时不必全部背下来。例如，如果想了解 <code>ls</code> 的参数，可以运行 <code>man ls</code>：</p>
+<div align="center">
+<img alt="使用 man 查看 ls 的手册" src="https://picx.zhimg.com/v2-066c625c31256082d90a444cd28ea266_r.jpg"/>
+</div>
+<h3 id="_7">重定向和管道</h3>
+<p><span>Shell<span class="heti-spacing"> </span></span>的一个强大之处是能够把不同程序连接起来。这里有三个常用的数据通道：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>简写</th>
+<th>文件描述符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>标准输入</td>
+<td><code>stdin</code></td>
+<td><code>0</code></td>
+<td>程序从哪里接收输入</td>
+</tr>
+<tr>
+<td>标准输出</td>
+<td><code>stdout</code></td>
+<td><code>1</code></td>
+<td>程序正常执行时输出内容到哪里</td>
+</tr>
+<tr>
+<td>标准错误</td>
+<td><code>stderr</code></td>
+<td><code>2</code></td>
+<td>程序把错误或诊断信息输出到哪里</td>
+</tr>
+</tbody>
+</table>
+<p>在终端中，程序通常从键盘相关的输入端读取内容，将输出和错误显示在屏幕上。<strong>重定向（redirection）</strong>允许我们改变这些默认去向，例如把输出写入文件，或者让程序从文件读取输入。</p>
+<p><span>bash<span class="heti-spacing"> </span></span>常见的重定向操作符如下：</p>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>command &gt; file</code></td>
+<td>将标准输出写入文件；文件已有内容时通常覆盖</td>
+</tr>
+<tr>
+<td><code>command &gt;&gt; file</code></td>
+<td>将标准输出<strong>追加</strong>到文件末尾</td>
+</tr>
+<tr>
+<td><code>command &lt; file</code></td>
+<td>让程序从指定文件读取标准输入</td>
+</tr>
+<tr>
+<td><code>command 2&gt; file</code></td>
+<td>将标准错误写入文件，<code>2</code> 即<span class="heti-skip"><span class="heti-spacing"> </span>stderr<span class="heti-spacing"> </span></span>的描述符</td>
+</tr>
+<tr>
+<td><code>command &amp;&gt; file</code></td>
+<td>在<span class="heti-skip"><span class="heti-spacing"> </span>Bash/Zsh<span class="heti-spacing"> </span></span>中将标准输出和标准错误同时写入文件</td>
+</tr>
+</tbody>
+</table>
+<p>示例：</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span>
+<span class="normal"><a href="#__codelineno-7-5">5</a></span>
+<span class="normal"><a href="#__codelineno-7-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Hello world"</span><span class="w"> </span>&gt;<span class="w"> </span>message.txt<span class="w">     </span><span class="c1"># 写入字符串</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>cat<span class="w"> </span>first.txt<span class="w"> </span>second.txt<span class="w"> </span>&gt;<span class="w"> </span>all.txt<span class="w">   </span><span class="c1"># 拼接两个文件</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a>diff<span class="w"> </span>old.txt<span class="w"> </span>new.txt<span class="w"> </span>&gt;<span class="w"> </span>changes.txt<span class="w">   </span><span class="c1"># 保存差异</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a>./a.out<span class="w"> </span>&lt;<span class="w"> </span>input.txt<span class="w">                  </span><span class="c1"># 由文件提供程序输入</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a>ls<span class="w"> </span>nonexistent<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>errors.txt<span class="w">         </span><span class="c1"># 保存错误信息</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"another line"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>message.txt<span class="w">   </span><span class="c1"># 追加而不覆盖</span>
+</span></code></pre></div></td></tr></table></div>
+<p><strong>管道</strong>（pipe）通过 <code>|</code> 连接命令：左边命令的标准输出成为右边命令的标准输入。</p>
+<p>例子<span><span class="heti-spacing"> </span>1</span>：</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>cat<span class="w"> </span>access.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">'ERROR'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span>
+</span></code></pre></div></td></tr></table></div>
+<p>第一步输出日志；第二步筛选包含 <code>ERROR</code> 的行；第三步只保留最后十行。</p>
+<p>例子<span><span class="heti-spacing"> </span>2</span>：下面是一个稍复杂的例子：</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a>cat<span class="w"> </span>/home/admin/access.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s1">' '</span><span class="w"> </span>-f<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-nr<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span>
+</span></code></pre></div></td></tr></table></div>
+<p>这条命令中，<code>cat</code> 输出日志；<code>cut -d ' ' -f 1</code> 以单个空格为分隔符，取每一行的第一个字段；<code>sort</code> 按照字典序排列文本，让相同文本相邻；<code>uniq -c</code> 统计重复次数；<code>sort -nr</code> 按数值降序排列；最后，<code>head -n 1</code> 取出计数最大的一行。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>管道符 <code>|</code> 将前一个命令的标准输出作为输入流，传给后一个命令的<strong>标准输入</strong>，而不是作为后一个命令的<strong>参数</strong>。</p>
+<p>例如，<code>ls | cat</code> 不能实现“输出当前目录中每个文件的内容”，它本质上等同于：</p>
+<p><img alt="ls 通过管道传给 cat 的示意图" src="https://picx.zhimg.com/80/v2-67be5ef378eb4d5a2b8e448c192e4119_1440w.webp" style="display: block; margin: 0 auto;"/></p>
+<p>正确的操作是 <code>cat `ls`</code> 或者 <code>ls | xargs cat</code>。</p>
+</div>
+<p>除了 <code>cat</code>、<code>grep</code>、<code>head</code>、<code>tail</code>，适合处理文本流的工具还有 <code>cut</code>、<code>sort</code>、<code>uniq</code>、<code>awk</code> 等等，不再赘述。</p>
+<p>遇到看不懂的长命令，可将其贴到<a href="https://explainshell.com"><span><span class="heti-spacing"> </span>explainshell</span></a>，逐段了解每个操作符和参数的用途。</p>
+<h2 id="path">环境变量、<span>PATH<span class="heti-spacing"> </span></span>与配置文件</h2>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>Linux<span class="heti-spacing"> </span></span>中，很多<span class="heti-skip"><span class="heti-spacing"> </span>Shell<span class="heti-spacing"> </span></span>命令最终会启动一个可执行文件。比如 <code>ls</code> 通常对应系统中某个位置的可执行程序，如 <code>/bin/ls</code> 或 <code>/usr/bin/ls</code>。可我们在终端里只输入 <code>ls</code> 就可以运行，为什么不需要先定位它的完整路径竟能运行？</p>
+<p>关键在于 <strong>环境变量（environment variable）</strong>，尤其是 <code>PATH</code>。环境变量是传递给程序的一组带名字的值，常用于描述系统环境、用户配置、搜索路径等信息。<code>PATH</code> 记录<span class="heti-skip"><span class="heti-spacing"> </span>Shell<span class="heti-spacing"> </span></span>搜索可执行程序时应当检查的目录列表。在<span class="heti-skip"><span class="heti-spacing"> </span>bash<span class="heti-spacing"> </span></span>中可以用下面的命令查看：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$PATH</span><span class="s2">"</span><span class="w">  </span><span class="c1"># 查看 PATH 的值</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a>env<span class="w">           </span><span class="c1"># 查看当前环境变量集合</span>
+</span></code></pre></div></td></tr></table></div>
+<p><span>Shell<span class="heti-spacing"> </span></span>通过 <code>PATH</code> 搜索 <code>ls</code> 时，会在路径列表中寻找匹配的可执行程序。这个机制也解释了为什么本地编译产生的 <code>a.out</code> 需要写成 <code>./a.out</code>：<code>.</code> 表示当前目录，而当前目录一般不在、也不应该随意添加到 <code>PATH</code>。</p>
+<p><span>Windows<span class="heti-spacing"> </span></span>系统的原理相同。在<span class="heti-skip"><span class="heti-spacing"> </span>PowerShell<span class="heti-spacing"> </span></span>中，可以用下面的命令查看环境变量：</p>
+<div class="language-powershell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="nb">echo </span><span class="nv">$env:PATH</span>  <span class="c"># 查看 PATH 的值</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="nb">ls </span><span class="n">Env</span><span class="p">:</span>         <span class="c"># 查看当前环境变量集合</span>
+</span></code></pre></div></td></tr></table></div>
+<p>在<span><span class="heti-spacing"> </span>Bash</span>（以及<span class="heti-skip"><span class="heti-spacing"> </span>Zsh<span class="heti-spacing"> </span></span>等<span><span class="heti-spacing"> </span>Shell</span>）中，可以用 <code>export</code> 让变量进入后续启动的子进程环境；<code>unset</code> 则删除该变量。这样的修改不会永久保存，关闭<span class="heti-skip"><span class="heti-spacing"> </span>Shell<span class="heti-spacing"> </span></span>后重新打开一个独立会话，会恢复默认设置。</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span>
+<span class="normal"><a href="#__codelineno-12-3">3</a></span>
+<span class="normal"><a href="#__codelineno-12-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">GREETING</span><span class="o">=</span><span class="s2">"Hello"</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$GREETING</span><span class="s2">"</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="nb">unset</span><span class="w"> </span>GREETING
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$GREETING</span><span class="s2">"</span><span class="w">  </span><span class="c1"># 此时通常为空</span>
+</span></code></pre></div></td></tr></table></div>
+<p><span>Bash<span class="heti-spacing"> </span></span>可以在启动时读取配置文件，自动设置环境变量、别名、提示符等内容，个人配置一般位于 <code>~/.bashrc</code>。例如，需要设置一个长期使用的变量时，可以在这个文件中增加一行：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">EDITOR</span><span class="o">=</span>vim
+</span></code></pre></div></td></tr></table></div>
+<p>保存配置文件后重新打开<span><span class="heti-spacing"> </span>Shell</span>，相关设置会在新会话中加载。如果希望当前会话立刻执行一个配置文件，可以运行：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</span></code></pre></div></td></tr></table></div>
+<p><code>source file</code> 的作用是在当前<span class="heti-skip"><span class="heti-spacing"> </span>Shell<span class="heti-spacing"> </span></span>中执行指定文件里的命令。</p>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>Windows<span class="heti-spacing"> </span></span>系统中，可以通过在<span class="heti-skip"><span class="heti-spacing"> </span>PowerShell<span class="heti-spacing"> </span></span>中输入 <code>echo $PROFILE</code> 来定位配置文件。</p>
+<p>最后还要说的是：<span>Shell<span class="heti-spacing"> </span></span>还是一门可以编程的语言。当命令已经能够独立完成一个操作时，就可以进一步考虑：<strong>如何获取命令的返回值？怎样编写条件判断、循环、嵌套命令和函数？</strong> 这些都属于<span class="heti-skip"><span class="heti-spacing"> </span>Shell<span class="heti-spacing"> </span></span>脚本编程的内容。它们能够把日常使用的一系列命令变成可重复执行的程序。</p>
+<p>推荐继续阅读：</p>
+<ul>
+<li><a href="https://missing.csail.mit.edu/2020/shell-tools/">MIT The Missing Semester：Shell Tools and Scripting</a></li>
+<li><a href="https://www.runoob.com/linux/linux-shell.html"><span>Shell<span class="heti-spacing"> </span></span>教程<span class="heti-skip"><span class="heti-spacing"> </span>-<span class="heti-spacing"> </span></span>菜鸟教程</a></li>
+<li>一些书：<ul>
+<li>Blum, R. (2008). <em>Linux command line and shell scripting bible</em>. John Wiley &amp; Sons.</li>
+<li>Robbins, A., &amp; Beebe, N. H. (2005). <em>Classic Shell Scripting: Hidden Commands that Unlock the Power of Unix</em>.  O'Reilly Media, Inc..</li>
+<li>Daniel J. Barrett (2022). Efficient Linux at the Command Line. O'Reilly Media, Inc.</li>
+</ul>
+</li>
+</ul>
+<h2 id="cli">值得尝试的<span class="heti-skip"><span class="heti-spacing"> </span>CLI<span class="heti-spacing"> </span></span>工具</h2>
+<p>熟悉 <code>ls</code>、<code>cat</code>、<code>grep</code>、<code>find</code> 以后，我们可能会希望获得更清晰的显示、更快捷的检索或更方便的目录跳转。对于编程、音视频和图像处理等复杂任务，我们也希望能有一些趁手的<span class="heti-skip"><span class="heti-spacing"> </span>CLI<span class="heti-spacing"> </span></span>工具。</p>
+<p>开源社区围绕这些需求开发了不少工具，下面便是其中的一些代表，不一而足：</p>
+<ul>
+<li><strong><a href="https://github.com/sharkdp/bat">bat</a></strong> 是增强版的 <code>cat</code>，能为代码添加语法高亮、行号和文件名。</li>
+<li><strong><a href="https://github.com/sharkdp/fd">fd</a></strong> 是一个更易用的文件搜索工具，可作为 <code>find</code> 的补充。</li>
+<li><strong><a href="https://github.com/eza-community/eza">eza</a></strong> 为 <code>ls</code> 提供更丰富的目录列表显示。</li>
+<li><strong><a href="https://github.com/BurntSushi/ripgrep">ripgrep</a></strong> 是一个高性能文本搜索工具，常用命令为 <code>rg</code>。例如，<code>rg "TODO" .</code> 会在当前项目中查找包含 <code>TODO</code> 的文本。</li>
+<li><strong><a href="https://github.com/sharkdp/hexyl">hexyl</a></strong> 是一个十六进制查看器，作用与 <code>hexdump</code> 相近，但显示更直观。</li>
+<li><strong><a href="https://github.com/aristocratos/btop">btop</a></strong> 是一个命令行资源监控工具，可以显示<span><span class="heti-spacing"> </span>CPU</span>、内存、磁盘、网络与进程状态。</li>
+<li><strong><a href="https://github.com/dylanaraps/neofetch">neofetch</a></strong> 在终端中显示系统的<span class="heti-skip"><span class="heti-spacing"> </span>ASCII<span class="heti-spacing"> </span></span>图案，并列出操作系统、内核版本、开机时间等信息。该项目目前已停止活跃维护，选择同类工具时可以留意后续替代项目。</li>
+<li><strong><a href="https://github.com/root-project/cling">cling</a></strong> 为<span class="heti-skip"><span class="heti-spacing"> </span>C++<span class="heti-spacing"> </span></span>提供交互式解释执行环境，使用感受类似<span class="heti-skip"><span class="heti-spacing"> </span>Python<span class="heti-spacing"> </span></span>的<span><span class="heti-spacing"> </span>REPL</span>，适合快速试验小段<span class="heti-skip"><span class="heti-spacing"> </span>C++<span class="heti-spacing"> </span></span>代码。</li>
+<li><strong><a href="https://github.com/FFmpeg/FFmpeg">FFmpeg</a></strong> 提供强大的音频、视频与字幕处理功能，常用于格式转换、编解码、剪辑与批处理。</li>
+<li>
+<p><strong><a href="https://github.com/ImageMagick/ImageMagick">ImageMagick</a></strong> 是一个图片处理工具，可以转换格式、调整尺寸、裁剪和编辑图片。例如，把<span class="heti-skip"><span class="heti-spacing"> </span>JPG<span class="heti-spacing"> </span></span>转成<span class="heti-skip"><span class="heti-spacing"> </span>PNG<span class="heti-spacing"> </span></span>只需一行命令，非常方便：</p>
+<div class="language-sh highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a>magick<span class="w"> </span>input.jpg<span class="w"> </span>output.png
+</span></code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p><strong><a href="https://github.com/tldr-pages/tldr">tldr</a></strong> 可以视作 <code>man</code> 的实用补充。<code>man</code> 通常给出完整手册，<code>tldr</code> 则提供简明说明与典型用例。</p>
+</li>
+</ul>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<nav aria-label="页脚" class="md-footer__inner md-grid">
+<a aria-label="上一页: 编程规范" class="md-footer__link md-footer__link--prev" href="../style/">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                上一页
+              </span>
+<div class="md-ellipsis">
+                编程规范
+              </div>
+</div>
+</a>
+<a aria-label="下一页: 包管理器" class="md-footer__link md-footer__link--next" href="package-manager/">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                下一页
+              </span>
+<div class="md-ellipsis">
+                包管理器
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2026 贺俊哲；基于 <a href="https://github.com/ZhouTimeMachine/2023_FPA" rel="noopener" target="_blank">ZhouTimeMachine/2023_FPA</a> 修改
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "navigation.footer"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+<script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+<script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+<script src="../js/katex.js"></script>
+</body>
+</html>

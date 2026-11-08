@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="浙江大学 2026-2027 秋冬《程序设计与算法基础》课程网站" name="description"/>
+<link href="https://goldfishhorse.github.io/2026_FPA/shell/vim/" rel="canonical"/>
+<link href="../package-manager/" rel="prev"/>
+<link href="../make/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.8.1" name="generator"/>
+<title>Vim - ZJU FPA 2026 Fall</title>
+<link href="../../assets/stylesheets/main.57a0d79d.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.fb2fffe2.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../css/heti.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/utils/katex.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&amp;display=fallback" rel="stylesheet"/>
+<link href="../../css/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#vim">
+          跳转至
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="页眉" class="md-header__inner md-grid">
+<a aria-label="ZJU FPA 2026 Fall" class="md-header__button md-logo" data-md-component="logo" href="../.." title="ZJU FPA 2026 Fall">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            ZJU FPA 2026 Fall
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Vim
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="夜间模式" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="夜间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+</label>
+<input aria-label="日间模式" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="teal" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="日间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="查找" class="md-search__options">
+<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" title="清空当前内容" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/GoldfishHorse/2026_FPA/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GoldfishHorse/2026_FPA
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="导航栏" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="ZJU FPA 2026 Fall" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="ZJU FPA 2026 Fall">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    ZJU FPA 2026 Fall
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/GoldfishHorse/2026_FPA/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GoldfishHorse/2026_FPA
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    
+  
+    主页
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../env/">
+<span class="md-ellipsis">
+    
+  
+    开发环境安装与第一次编译运行
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../debug/">
+<span class="md-ellipsis">
+    
+  
+    调试技术
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../style/">
+<span class="md-ellipsis">
+    
+  
+    编程规范
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Shell 基础与 CLI 工具入门
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Shell 基础与 CLI 工具入门
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    
+  
+    终端和 Shell 基础
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../package-manager/">
+<span class="md-ellipsis">
+    
+  
+    包管理器
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Vim
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Vim
+  
+
+    
+  </span>
+</a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vim_1">
+<span class="md-ellipsis">
+      
+        Vim 的模式
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      
+        入门操作
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      
+        快捷键速查
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      
+        基础配置
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      
+        继续学习
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../make/">
+<span class="md-ellipsis">
+    
+  
+    GNU Make
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    杂谈
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    杂谈
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../misc/c-types/">
+<span class="md-ellipsis">
+    
+  
+    浅谈 C 语言的数据类型
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../faq/">
+<span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vim_1">
+<span class="md-ellipsis">
+      
+        Vim 的模式
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      
+        入门操作
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      
+        快捷键速查
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      
+        基础配置
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      
+        继续学习
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="vim">Vim：在命令行中编辑文本</h1>
+<p>在服务器上工作时，我们不一定有图形编辑器可用；此时，直接在终端中修改代码或配置文件就很方便。<a href="https://www.vim.org/"><span>Vim<span class="heti-spacing"> </span></span></a>的名字意为 <em>Vi IMproved</em>，即“功能更加丰富的<span class="heti-skip"><span class="heti-spacing"> </span>vi<span class="heti-spacing"> </span></span>系编辑器”。它可以让我们只用键盘完成复杂的编辑操作。</p>
+<p><span>Linux<span class="heti-spacing"> </span></span>用户一般可以通过发行版包管理器安装<span><span class="heti-spacing"> </span>Vim</span>，<span>macOS<span class="heti-spacing"> </span></span>用户可以使用<span><span class="heti-spacing"> </span>Homebrew</span>。<span>Windows<span class="heti-spacing"> </span></span>用户可以访问<a href="https://www.vim.org/download.php"><span class="heti-skip"><span class="heti-spacing"> </span>Vim<span class="heti-spacing"> </span></span>官方下载页</a>，也可以安装<a href="https://neovim.io"><span><span class="heti-spacing"> </span>Neovim</span></a>。习惯<span class="heti-skip"><span class="heti-spacing"> </span>VS Code<span class="heti-spacing"> </span></span>的同学还可以尝试<a href="https://marketplace.visualstudio.com/items?itemName=vscodevim.vim"><span class="heti-skip"><span class="heti-spacing"> </span>VSCode Vim<span class="heti-spacing"> </span></span>插件</a>，使用类似<span class="heti-skip"><span class="heti-spacing"> </span>Vim<span class="heti-spacing"> </span></span>的快捷键进行编辑。</p>
+<h2 id="vim_1"><span>Vim<span class="heti-spacing"> </span></span>的模式</h2>
+<p><span>Vim<span class="heti-spacing"> </span></span>的一个突出特点是<strong>模式</strong>（mode<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。启动后通常进入<span><span class="heti-spacing"> </span>Normal</span>（普通）模式，键盘按键会被解释为编辑操作；此时直接输入文字可能不会得到预期结果。最常用的四种模式是：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>主要任务</th>
+<th>常见进入方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Normal</td>
+<td>移动光标、删除或修改文本、组合操作</td>
+<td>启动<span class="heti-skip"><span class="heti-spacing"> </span>Vim<span class="heti-spacing"> </span></span>后默认进入；按 <code>Esc</code> 返回</td>
+</tr>
+<tr>
+<td>Insert</td>
+<td>正常输入文字</td>
+<td><span>Normal<span class="heti-spacing"> </span></span>模式下按 <code>i</code>，也可用 <code>a</code>、<code>o</code> 等</td>
+</tr>
+<tr>
+<td>Command-line（命令行模式）</td>
+<td>输入保存、退出等冒号命令</td>
+<td><span>Normal<span class="heti-spacing"> </span></span>模式下按 <code>:</code></td>
+</tr>
+<tr>
+<td>Visual</td>
+<td>选择文字，再执行复制、删除等操作</td>
+<td><span>Normal<span class="heti-spacing"> </span></span>模式下按 <code>v</code>，或使用其他<span class="heti-skip"><span class="heti-spacing"> </span>Visual<span class="heti-spacing"> </span></span>相关快捷键</td>
+</tr>
+</tbody>
+</table>
+<div align="center">
+<img alt="Vim 的模式转换关系" src="https://raw.githubusercontent.com/TonyCrane/PracticalSkillsTutorial/master/slides/src/lec1/modes.png"/>
+</div>
+<p>很多<span class="heti-skip"><span class="heti-spacing"> </span>Vim<span class="heti-spacing"> </span></span>新手最常见的困惑是：为什么按键后不能输入，甚至不知道怎样退出？理解“模式”以后就知道了：此时的按键可能正在执行<span class="heti-skip"><span class="heti-spacing"> </span>Normal<span class="heti-spacing"> </span></span>模式命令。</p>
+<h2 id="_1">入门操作</h2>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vim hello.txt</code></td>
+<td>从<span class="heti-skip"><span class="heti-spacing"> </span>Shell<span class="heti-spacing"> </span></span>打开文件</td>
+</tr>
+<tr>
+<td>按 <code>i</code></td>
+<td>进入<span class="heti-skip"><span class="heti-spacing"> </span>Insert<span class="heti-spacing"> </span></span>模式，可以输入文字</td>
+</tr>
+<tr>
+<td>按 <code>Esc</code></td>
+<td>回到<span class="heti-skip"><span class="heti-spacing"> </span>Normal<span class="heti-spacing"> </span></span>模式</td>
+</tr>
+<tr>
+<td>输入 <code>:w</code></td>
+<td>保存文件</td>
+</tr>
+<tr>
+<td>输入 <code>:q</code></td>
+<td>退出<span><span class="heti-spacing"> </span>Vim</span></td>
+</tr>
+<tr>
+<td>输入 <code>:wq</code></td>
+<td>保存并退出</td>
+</tr>
+<tr>
+<td>输入 <code>:q!</code></td>
+<td>放弃未保存的修改并强制退出</td>
+</tr>
+<tr>
+<td>输入 <code>:x</code></td>
+<td>在需要时写入修改并退出</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>:w</code>、<code>:q</code>、<code>:wq</code>、<code>:q!</code> 和 <code>:x</code> 都是在<span class="heti-skip"><span class="heti-spacing"> </span>Vim<span class="heti-spacing"> </span></span>内部输入的编辑器命令，不能直接拿到<span class="heti-skip"><span class="heti-spacing"> </span>Shell<span class="heti-spacing"> </span></span>中执行。</p>
+</div>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>Normal<span class="heti-spacing"> </span></span>模式中，<span>Vim<span class="heti-spacing"> </span></span>的经典移动按键是 <code>h</code>（左<heti-adjacent class="heti-adjacent-half">）</heti-adjacent><heti-adjacent class="heti-adjacent-half">、</heti-adjacent><code>j</code>（下<heti-adjacent class="heti-adjacent-half">）</heti-adjacent><heti-adjacent class="heti-adjacent-half">、</heti-adjacent><code>k</code>（上<heti-adjacent class="heti-adjacent-half">）</heti-adjacent><heti-adjacent class="heti-adjacent-half">、</heti-adjacent><code>l</code>（右<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，因此不需要频繁把手移到方向键区域。<code>i</code> 用来在光标前进入<span class="heti-skip"><span class="heti-spacing"> </span>Insert<span class="heti-spacing"> </span></span>模式，<code>a</code> 可以在光标后追加，<code>o</code> 则在下一行打开新行；按 <code>Esc</code> 返回<span class="heti-skip"><span class="heti-spacing"> </span>Normal<span class="heti-spacing"> </span></span>模式。</p>
+<p><span>Vim<span class="heti-spacing"> </span></span>的命令还可以组合起来。例如，按 <code>Ctrl-V</code> 进入<span><span class="heti-spacing"> </span>Visual Block</span>（可视块）模式，选中若干行的行首，按大写 <code>I</code> 输入注释符号（如 <code>//</code><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，再按 <code>Esc</code>，即可在选定的多行前插入相同内容。</p>
+<h2 id="_2">快捷键速查</h2>
+<p>下面几张速查图汇集了<span class="heti-skip"><span class="heti-spacing"> </span>Normal<span class="heti-spacing"> </span></span>模式中的常用操作，适合在练习时查阅。</p>
+<div align="center">
+<img alt="Vim 快捷键速查表" src="https://raw.githubusercontent.com/TonyCrane/PracticalSkillsTutorial/master/slides/src/lec1/vimcheatsheet.png"/>
+<p><em>来源：<a href="https://vimcheatsheet.com">vimcheatsheet.com</a>。</em></p>
+</div>
+<div align="center">
+<img alt="ViEmu 的 Vim 操作图解" src="https://raw.githubusercontent.com/TonyCrane/PracticalSkillsTutorial/master/slides/src/lec1/vim-cheat-sheet.gif"/>
+<p><em>来源：<a href="http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html"><span>ViEmu<span class="heti-spacing"> </span></span>图形教程</a>。</em></p>
+</div>
+<div align="center">
+<img alt="ViEmu 的 Vim 基础操作图" src="https://raw.githubusercontent.com/TonyCrane/PracticalSkillsTutorial/master/slides/src/lec1/vi-vim-tutorial-1.gif"/>
+<p><em>其他操作图解也可在<a href="http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html"><span class="heti-skip"><span class="heti-spacing"> </span>ViEmu<span class="heti-spacing"> </span></span></a>查看。</em></p>
+</div>
+<h2 id="_3">基础配置</h2>
+<p><span>Vim<span class="heti-spacing"> </span></span>的个人配置文件一般位于 <code>~/.vimrc</code>。如果希望<span class="heti-skip"><span class="heti-spacing"> </span>Vim<span class="heti-spacing"> </span></span>打开代码时自动显示行号、启用缩进和语法高亮等功能，可以加入下面的配置：</p>
+<div class="language-vim highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nb">syntax</span> <span class="k">on</span>           <span class="c">" 启用语法高亮</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>colorscheme slate   <span class="c">" 颜色主题</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="k">set</span> <span class="nb">tabstop</span><span class="p">=</span><span class="m">4</span>       <span class="c">" Tab 算作的空格数</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="k">set</span> <span class="nb">expandtab</span>       <span class="c">" 用空格替换 Tab</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="k">set</span> <span class="nb">softtabstop</span><span class="p">=</span><span class="m">4</span>   <span class="c">" 输入 Tab 时替换的空格数</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="k">set</span> <span class="k">shiftwidth</span><span class="p">=</span><span class="m">4</span>    <span class="c">" 自动缩进空格数</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="k">set</span> <span class="nb">autoindent</span>      <span class="c">" 自动缩进</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="k">set</span> <span class="nb">smartindent</span>     <span class="c">" 智能缩进</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="k">set</span> <span class="nb">number</span>          <span class="c">" 行号</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="k">set</span> <span class="nb">ruler</span>           <span class="c">" 显示光标所在行列</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="k">set</span> <span class="nb">scrolloff</span><span class="p">=</span><span class="m">3</span>     <span class="c">" 光标上下两侧保留的行数</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="k">set</span> <span class="nb">showmatch</span>       <span class="c">" 提示配对的括号</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="k">set</span> <span class="k">hlsearch</span>        <span class="c">" 高亮显示搜索结果</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="k">set</span> <span class="nb">incsearch</span>       <span class="c">" 实时显示搜索结果</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_4">继续学习</h2>
+<p>这里对<span class="heti-skip"><span class="heti-spacing"> </span>Vim<span class="heti-spacing"> </span></span>的介绍比较简略。如下是更多学习资料：</p>
+<ul>
+<li>最直接的学习方法是在终端输入 <code>vimtutor</code>，启动<span class="heti-skip"><span class="heti-spacing"> </span>Vim<span class="heti-spacing"> </span></span>自带的交互式教程。</li>
+<li>如果喜欢边玩边学，可以尝试<a href="https://vim-adventures.com"><span><span class="heti-spacing"> </span>Vim Adventures</span></a>。</li>
+<li>需要速查时，推荐<a href="https://vimcheatsheet.com"><span><span class="heti-spacing"> </span>vimcheatsheet.com</span></a>、<a href="http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html"><span>ViEmu<span class="heti-spacing"> </span></span></a>和<a href="https://vim.rtorr.com/lang/zh_cn"><span class="heti-skip"><span class="heti-spacing"> </span>vim.rtorr.com<span class="heti-spacing"> </span></span>中文版</a>。</li>
+<li>如果希望系统学习，可以参考中文资料<a href="https://gitlab.com/wsdjeg/vim-galore-zh_cn">《<span>Vim<span class="heti-spacing"> </span></span>从入门到精通<heti-adjacent class="heti-adjacent-half">》</heti-adjacent></a>。</li>
+</ul>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<nav aria-label="页脚" class="md-footer__inner md-grid">
+<a aria-label="上一页: 包管理器" class="md-footer__link md-footer__link--prev" href="../package-manager/">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                上一页
+              </span>
+<div class="md-ellipsis">
+                包管理器
+              </div>
+</div>
+</a>
+<a aria-label="下一页: GNU Make" class="md-footer__link md-footer__link--next" href="../make/">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                下一页
+              </span>
+<div class="md-ellipsis">
+                GNU Make
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2026 贺俊哲；基于 <a href="https://github.com/ZhouTimeMachine/2023_FPA" rel="noopener" target="_blank">ZhouTimeMachine/2023_FPA</a> 修改
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.footer"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+<script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+<script src="../../js/katex.js"></script>
+</body>
+</html>
