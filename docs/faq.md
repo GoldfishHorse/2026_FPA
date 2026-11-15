@@ -8,6 +8,7 @@
         —— 优先**积极搜索**，bing、google、[stackoverflow](https://stackoverflow.com/) 经常可以找到答案。见[关于搜索引擎](#search-engine)。
         （或许初学时百度百科、百度知道、CSDN 能够给你一些似乎还行的指引，但是随着你逐渐熟练，你会发现他们带给你的坑将远比帮助更多。）
     + [提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md)
+    + LUG @ USTC 的[提问指南](howtoask.md)
     + 【新生宝典】不要再拍屏了！新生大学习之如何正确地截图 https://www.cc98.org/topic/6265782 复制本链接到浏览器或者打开【CC98】微信小程序查看~
 
 ## 关于开发环境
@@ -36,6 +37,9 @@
 
 + [新电脑使用Dev-C++时进行编译运行，运行时出结果速度缓慢，要8秒左右，是什么原因啊？](https://www.zhihu.com/question/618314899)
 + [Windows11下由Windows Defender造成的C语言代码编译运行卡顿](https://michsong.com/posts/techtalk/windows11%E4%B8%8B%E7%94%B1windows-defender%E9%80%A0%E6%88%90%E7%9A%84c%E8%AF%AD%E8%A8%80%E4%BB%A3%E7%A0%81%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8C%E5%8D%A1%E9%A1%BF/)
+
+## 在 DevC++ 编译运行时，Windows 报错“应用程序控制策略已阻止此文件”？
+Windows 安全中心 → 应用和浏览器控制 → 智能应用控制设置 → 关闭
 
 
 ## 为什么教材里写的是 `main()` 而不是 `int main()`？
@@ -97,9 +101,9 @@ C# 是另一种语言，也不要和 C++ 或 C 搞混了。
 
 <a id="search-engine"></a>
 
-## 关于搜索引擎
+## 我应该用什么搜索引擎？
 
-关于如何使用搜索引擎，每个人有不同的习惯，但至少要彻底离开百度，百度是一个充满诈骗和广告的东西，几乎难以得到任何有用信息。建议使用[必应（bing）](https://www.bing.com/)搜索或者[谷歌（google）](https://www.google.com/)搜索（条件允许的话），其中必应搜索分为国内版和国外版，国内版方便检索中文内容，国际版则使用英文搜索，搜索英文网页效果很好。
+关于搜索引擎的使用，每个人有不同的习惯，但至少要彻底离开百度，百度是一个充满诈骗和广告的东西，几乎难以得到任何有用信息。建议使用[必应（bing）](https://www.bing.com/)搜索或者[谷歌（google）](https://www.google.com/)搜索（条件允许的话），其中必应搜索分为国内版和国外版，国内版方便检索中文内容，国际版则使用英文搜索，搜索英文网页效果很好。
 
 其次，如果你想要更高级、更精确的搜索，那么你需要善用搜索引擎的一些独特功能，比如必应搜索：
 

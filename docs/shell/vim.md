@@ -47,17 +47,20 @@ Vim 的命令还可以组合起来。例如，按 `Ctrl-V` 进入 Visual Block�
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/TonyCrane/PracticalSkillsTutorial/master/slides/src/lec1/vimcheatsheet.png" alt="Vim 快捷键速查表">
-  <p><em>来源：<a href="https://vimcheatsheet.com">vimcheatsheet.com</a>。</em></p>
+  <br>
+  <font size="2" color="gray"><i>来源：<a href="https://vimcheatsheet.com">vimcheatsheet.com</a>。</i></font>
 </div>
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/TonyCrane/PracticalSkillsTutorial/master/slides/src/lec1/vim-cheat-sheet.gif" alt="ViEmu 的 Vim 操作图解">
-  <p><em>来源：<a href="http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html">ViEmu 图形教程</a>。</em></p>
+  <br>
+  <font size="2" color="gray"><i>来源：<a href="http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html">ViEmu 图形教程</a>。</i></font>
 </div>
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/TonyCrane/PracticalSkillsTutorial/master/slides/src/lec1/vi-vim-tutorial-1.gif" alt="ViEmu 的 Vim 基础操作图">
-  <p><em>其他操作图解也可在 <a href="http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html">ViEmu</a> 查看。</em></p>
+  <br>
+  <font size="2" color="gray"><i>其他操作图解也可在 <a href="http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html">ViEmu</a> 查看。</i></font>
 </div>
 
 ## 基础配置

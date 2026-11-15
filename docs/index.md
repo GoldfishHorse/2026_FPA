@@ -12,6 +12,11 @@
 - [开发环境安装与第一次编译运行](env/index.md)：如何在自己的计算机中搭建 C 语言开发环境
 - [调试技术](debug/index.md)：如何找出所写代码中的错误 (bug)，即 debug
 - [编程规范](style/index.md)：如何写出优雅、不容易出错的代码
+- [Shell 基础与 CLI 工具入门](shell/index.md)：认识终端和 Shell，学习包管理器、Vim 与 GNU Make 的基本用法
+- [Git、GitHub 与开源基础](git/index.md)：使用 Git 管理版本，通过 GitHub 参与协作，了解开源软件与许可证
+- 杂谈：[浅谈 C 语言的数据类型](misc/c-types.md)，进一步理解 C 语言的类型与声明
+- [提问指南](howtoask.md)：如何查找信息、清晰描述问题，以及向大语言模型提问；转载自 [USTC LUG](https://lug.ustc.edu.cn/wiki/)。
+- [FAQ](faq.md)：开发环境、编程学习中的常见问题与解答
 
 !!! note
     助教在写作过程可能出现纰漏与不当，如果有任何意见欢迎联系指出。

@@ -15,12 +15,19 @@ nav:
   - 调试技术: debug/index.md
   - 编程规范: style/index.md
   - Shell 基础与 CLI 工具入门:
-      - 终端和 Shell 基础: shell/index.md
+      - 概述: shell/index.md
+      - 终端和 Shell 基础: shell/shell.md
       - 包管理器: shell/package-manager.md
       - Vim: shell/vim.md
       - GNU Make: shell/make.md
+  - Git、GitHub 与开源基础:
+      - 概述: git/index.md
+      - Git 基础: git/git.md
+      - GitHub 与项目协作: git/github.md
+      - 开源软件与许可证: git/open-source.md
   - 杂谈:
       - 浅谈 C 语言的数据类型: misc/c-types.md
+  - 提问指南: howtoask.md
   - FAQ: faq.md
 
 theme:
