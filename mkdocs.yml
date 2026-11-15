@@ -5,7 +5,7 @@ repo_url: https://github.com/GoldfishHorse/2026_FPA/
 edit_uri: edit/main/docs/
 site_description: 浙江大学 2026-2027 秋冬《程序设计与算法基础》课程网站
 copyright: >-
-  Copyright &copy; 2026 贺俊哲；基于
+  Copyright &copy; 2026 GoldfishHorse；基于
   <a href="https://github.com/ZhouTimeMachine/2023_FPA" target="_blank" rel="noopener">ZhouTimeMachine/2023_FPA</a>
   修改
 
@@ -27,6 +27,7 @@ nav:
       - 开源软件与许可证: git/open-source.md
   - 杂谈:
       - 浅谈 C 语言的数据类型: misc/c-types.md
+      - 排序算法可视化: misc/sorting.md
   - 提问指南: howtoask.md
   - FAQ: faq.md
 
@@ -52,7 +53,7 @@ theme:
     # - navigation.sections
   icon:
     repo: fontawesome/brands/git-alt
-    
+
 plugins:
   - search
   - heti:
@@ -63,6 +64,7 @@ plugins:
 extra_javascript:
   - https://cdn.tonycrane.cc/utils/katex.min.js
   - js/katex.js
+  - js/sorting.js
 
 extra_css:
   - https://cdn.tonycrane.cc/utils/katex.min.css

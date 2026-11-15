@@ -14,7 +14,9 @@
 - [编程规范](style/index.md)：如何写出优雅、不容易出错的代码
 - [Shell 基础与 CLI 工具入门](shell/index.md)：认识终端和 Shell，学习包管理器、Vim 与 GNU Make 的基本用法
 - [Git、GitHub 与开源基础](git/index.md)：使用 Git 管理版本，通过 GitHub 参与协作，了解开源软件与许可证
-- 杂谈：[浅谈 C 语言的数据类型](misc/c-types.md)，进一步理解 C 语言的类型与声明
+- 杂谈
+    - [浅谈 C 语言的数据类型](misc/c-types.md)：进一步理解 C 语言的类型与声明
+    - [排序算法可视化](misc/sorting.md)：通过交互动画和 C 代码，了解冒泡、选择、插入、快速、归并和堆排序
 - [提问指南](howtoask.md)：如何查找信息、清晰描述问题，以及向大语言模型提问；转载自 [USTC LUG](https://lug.ustc.edu.cn/wiki/)。
 - [FAQ](faq.md)：开发环境、编程学习中的常见问题与解答
 

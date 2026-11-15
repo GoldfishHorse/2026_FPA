@@ -1,0 +1,10 @@
+<div id='SelectAlgorithmMenu' class='InnerBox Centered'>
+  <a class="Button" routerLink=''>
+    <p>Go Back</p>
+  </a>
+</div>
+<div class='Grid InnerBox'>
+  <p class='Button' *ngFor='let SortingAlgorithm of SortingAlgorithms' (click)='SetSort($event)'>
+    {{SortingAlgorithm.name}}
+  </p>
+</div>

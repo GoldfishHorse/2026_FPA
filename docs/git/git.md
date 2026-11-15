@@ -492,6 +492,12 @@ git pull origin main                                      # 获取并合并远�
 
 `clone` 会复制历史并自动建立名为 `origin` 的远程关联。`push` 将本地提交传送到远程；`fetch` 获取远程的新对象和引用信息。`pull` 相当于先执行 `fetch`，再进行可能的 merge 或 rebase；日常协作中，`pull` 经常用来同步其他人的新提交。
 
+  <div align="center">
+    <img src="https://code.visualstudio.com/assets/docs/sourcecontrol/repos-remotes/git-fetch-pull-push.png" alt="Working with repositories and remotes">
+    <br>
+    <font size="2" color="gray"><i>图片来自 <a href="https://code.visualstudio.com/docs/sourcecontrol/repos-remotes">Visual Studio Code 文档</a></i></font>
+  </div>
+
 <div align="center">
   <img src="https://raw.githubusercontent.com/TonyCrane/PracticalSkillsTutorial/master/slides/src/lec2/model-remote.png" alt="本地与远程仓库的关系">
   <br>
@@ -524,3 +530,13 @@ Git 的对象之间会相互引用，例如提交对象（Commit）旧会记录�
 
 !!! tip
     除了直接输入 Git 命令，还有一些其它的很方便的工具，例如 [gitui](https://github.com/extrawurst/gitui) 和 [lazygit](https://github.com/jesseduffield/lazygit)。它们是运行于终端内的文本用户界面（TUI）工具，可以浏览修改、操作暂存区、查看提交和处理分支。
+!!! tip
+    Visual Studio Code 也提供了非常好用、方便的 Git 工具
+    <div align="center">
+      <img src="https://code.visualstudio.com/assets/docs/sourcecontrol/overview/overview.png" alt="Source control interface"><br>
+      <img src="https://code.visualstudio.com/assets/docs/sourcecontrol/branches-worktrees/current-branch.png" alt="Git branches and worktrees in VS Code">
+      <br>
+      <font size="2" color="gray"><i>图片来自 <a href="https://code.visualstudio.com/docs/sourcecontrol/overview">Visual Studio Code 文档</a></i></font>
+    </div>
+
+    请参考 [Visual Studio Code 文档 - Source control in VS Code](https://code.visualstudio.com/docs/sourcecontrol/overview)。

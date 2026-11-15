@@ -1,0 +1,22 @@
+
+<p id="ErrorMessage">{{ErrorMessage}}</p>
+
+<div id="TwoPanels" (window:resize)="onResize()">
+  <div>
+    <canvas id="DataGraph" class="InnerBox"
+            width="450" height="350"></canvas>
+
+    <div id="GraphControls" class="InnerBox">
+      <button class="Button" (click)="ResetGraph()">
+        <p>重新生成</p>
+      </button>
+    </div>
+  </div>
+
+  <div>
+    <component-menu [SortingAlgorithm]="SortingAlgorithm">
+    </component-menu>
+    <component-submenu [Coordinates]="Coordinates">
+    </component-submenu>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div id='SelectedSettings' class='InnerBox'  hidden>
+	<div hidden>
+		<h2>排序设置</h2>
+		<div class='FormGroup'>
+			<p id='SortSpeedText'>排序速度:</p>
+			<input id='SortSpeed' class='Slider' type='Range' step=0.5 min=0 max=10 value=0 (input)='SetSpeed($event)'>
+		</div>
+		<div class='FormGroup'>
+			<p id='SampleSizeText'>数据规模:</p>
+			<input id='SampleSize' class='Slider' type='Range' step=0.5 min=2 max=14 value=0 (input)='SetSample($event)'>
+		</div>
+		<div class='FormGroup'>
+			<p id='SampleTypeText'>数据类型:</p>
+			<input id='SampleType'class='Slider' type='Range' step=1 min=0 max=5 value=0 (input)='SetSampleType($event)'>
+		</div>
+		<div class='FormGroup'>
+			<p id='SampleOrderText'>数据顺序:</p>
+			<input id='SampleOrder'class='Slider' type='Range' step=1 min=0 max=1 value=0 (input)='SetSampleOrder($event)'>
+		</div>
+	</div>
+	<div hidden>
+		<h2>Visual Settings</h2>
+		<div class='FormGroup'>
+			<p id='GraphTypeText'>图表类型:</p>
+			<input id='GraphType' class='Slider' type='Range' step=1 min=0 max=4 value=0 (input)='SetGraphType($event)'>
+		</div>
+		<div class='FormGroup'>
+			<p id='GraphColorText'>图表颜色:</p>
+			<input id='GraphColor' class='Slider' type='Range' step=1 min=0 max=3 value=0 (input)='SetGraphColor($event)'>
+		</div>
+		<div class='FormGroup'>
+			<p id='ShowSweeperText'>显示扫描线:</p>
+			<input id='ShowSweeper' class='Slider' type='Range' step=1 min=0 max=1 value=0 (input)='SetShowSweeper($event)'>
+		</div>
+	</div>
+</div>

@@ -348,6 +348,8 @@ Hello, world!
     - `gcc hello.c -o hello.exe` 是**编译**，成功时通常不会输出任何提示；
     - `.\hello.exe` 或 `./hello` 才是**运行**刚生成的程序。
 
+最后要说的是，Visual Studio Code 本身提供了非常丰富且强大的各种功能，我们这里篇幅所限无法介绍。关于各种功能的使用，请大家参阅 [Visual Studio Code 官方文档](https://code.visualstudio.com/docs/)。
+
 ## 常见问题
 
 ### 提示找不到 `gcc` 或 `clang`
