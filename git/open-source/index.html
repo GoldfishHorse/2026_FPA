@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="浙江大学 2026-2027 秋冬《程序设计与算法基础》课程网站" name="description"/>
+<link href="https://goldfishhorse.github.io/2026_FPA/git/open-source/" rel="canonical"/>
+<link href="../github/" rel="prev"/>
+<link href="../../misc/c-types/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.8.1" name="generator"/>
+<title>开源软件与许可证 - ZJU FPA 2026 Fall</title>
+<link href="../../assets/stylesheets/main.57a0d79d.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.fb2fffe2.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../css/heti.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/utils/katex.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&amp;display=fallback" rel="stylesheet"/>
+<link href="../../css/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#_1">
+          跳转至
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="页眉" class="md-header__inner md-grid">
+<a aria-label="ZJU FPA 2026 Fall" class="md-header__button md-logo" data-md-component="logo" href="../.." title="ZJU FPA 2026 Fall">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            ZJU FPA 2026 Fall
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              开源软件与许可证
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="夜间模式" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="夜间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+</label>
+<input aria-label="日间模式" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="teal" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="日间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="查找" class="md-search__options">
+<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" title="清空当前内容" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/GoldfishHorse/2026_FPA/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GoldfishHorse/2026_FPA
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="导航栏" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="ZJU FPA 2026 Fall" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="ZJU FPA 2026 Fall">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    ZJU FPA 2026 Fall
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/GoldfishHorse/2026_FPA/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GoldfishHorse/2026_FPA
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    
+  
+    主页
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../env/">
+<span class="md-ellipsis">
+    
+  
+    开发环境安装与第一次编译运行
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../debug/">
+<span class="md-ellipsis">
+    
+  
+    调试技术
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../style/">
+<span class="md-ellipsis">
+    
+  
+    编程规范
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Shell 基础与 CLI 工具入门
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Shell 基础与 CLI 工具入门
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../shell/">
+<span class="md-ellipsis">
+    
+  
+    概述
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../shell/shell/">
+<span class="md-ellipsis">
+    
+  
+    终端和 Shell 基础
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../shell/package-manager/">
+<span class="md-ellipsis">
+    
+  
+    包管理器
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../shell/vim/">
+<span class="md-ellipsis">
+    
+  
+    Vim
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../shell/make/">
+<span class="md-ellipsis">
+    
+  
+    GNU Make
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Git、GitHub 与开源基础
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Git、GitHub 与开源基础
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    
+  
+    概述
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../git/">
+<span class="md-ellipsis">
+    
+  
+    Git 基础
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../github/">
+<span class="md-ellipsis">
+    
+  
+    GitHub 与项目协作
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    开源软件与许可证
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    开源软件与许可证
+  
+
+    
+  </span>
+</a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      
+        开源与自由软件的含义
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#copyright-copyleft">
+<span class="md-ellipsis">
+      
+        Copyright 与 Copyleft
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#license">
+<span class="md-ellipsis">
+      
+        LICENSE 和许可证
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creative-commons">
+<span class="md-ellipsis">
+      
+        文档、图片与其他内容：Creative Commons
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    杂谈
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    杂谈
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../misc/c-types/">
+<span class="md-ellipsis">
+    
+  
+    浅谈 C 语言的数据类型
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../misc/sorting/">
+<span class="md-ellipsis">
+    
+  
+    排序算法可视化
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../howtoask/">
+<span class="md-ellipsis">
+    
+  
+    提问指南
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../faq/">
+<span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      
+        开源与自由软件的含义
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#copyright-copyleft">
+<span class="md-ellipsis">
+      
+        Copyright 与 Copyleft
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#license">
+<span class="md-ellipsis">
+      
+        LICENSE 和许可证
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#creative-commons">
+<span class="md-ellipsis">
+      
+        文档、图片与其他内容：Creative Commons
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="_1">开源软件与许可证</h1>
+<h2 id="_2">开源与自由软件的含义</h2>
+<p>我们知道，<span>Github<span class="heti-spacing"> </span></span>项目把源代码放在互联网，方便其他人阅读与研究。在提供源代码的基础上，<strong>开源软件</strong>（Open Source Software）还通过相应许可证授予使用、修改和再分发等权利，供个人与组织开展开发协作。</p>
+<p>一个类似的定义是“<strong>自由软件</strong>（Free Software）”，这个概念是由“软件使用者的权利”来定义的。根据<a href="https://www.gnu.org/philosophy/free-sw.zh-cn.html"><span class="heti-skip"><span class="heti-spacing"> </span>GNU<span class="heti-spacing"> </span></span>对自由软件的说明</a>，使用者拥有以下四项自由：</p>
+<ol>
+<li>为任何目的运行程序的自由。</li>
+<li>研究程序如何工作，并按自己的需要修改它的自由。</li>
+<li>再分发程序副本的自由。</li>
+<li>将修改后的版本分发给其他人的自由。</li>
+</ol>
+<p>自由软件强调的是使用者拥有的权利，所以是允许采用收费发行、商业支持等经营方式。<a href="https://www.fsf.org/">自由软件基金会（FSF）</a> 是推动相关理念的组织。开源与自由软件各有自身的定义和倡议机构，许多软件许可证同时满足两者的条件。</p>
+<div align="center">
+<img alt="GNU 对不同类型软件的分类示意图" src="https://www.gnu.org/philosophy/category.zh-cn.svg"/>
+<font color="gray" size="2"><i>图片来自 <a href="https://www.gnu.org/philosophy/categories.zh-cn.html">自由与非自由软件的分类</a></i></font>
+</div>
+<p>可以参考：<a href="https://www.gnu.org/philosophy/free-sw.zh-cn.html">什么是自由软件？</a>。</p>
+<h2 id="copyright-copyleft"><span>Copyright<span class="heti-spacing"> </span></span>与<span><span class="heti-spacing"> </span>Copyleft</span></h2>
+<p><strong>Copyright（著作权）</strong> 确定作品及其权利归属。软件作者通常自创作完成时即拥有相应权利，常见的版权声明形式是：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>Copyright © 2026 Example Author. All rights reserved.
+</span></code></pre></div></td></tr></table></div>
+<p>需要保留版权声明的开源许可证同样以著作权制度为基础，作者通过许可证将一部分权利授予使用者。见后文的 <a href="#licenses"><code>LICENSE</code> 和许可证</a>。</p>
+<p><strong>Copyleft</strong> 是一个相对应的概念，简而言之，它是利用著作权及许可证条款，要求再分发的修改版本或某些衍生作品继续遵守指定的许可条件的一种方式。<span>GNU GPL<span class="heti-spacing"> </span></span>就是典型的<span class="heti-skip"><span class="heti-spacing"> </span>Copyleft<span class="heti-spacing"> </span></span>许可证，它会让项目的后续版本继续提供相应的软件自由。</p>
+<p><a id="licenses"></a></p>
+<h2 id="license"><code>LICENSE</code> 和许可证</h2>
+<p>项目公开代码时，仓库根目录会放置 <code>LICENSE</code> 文件，载明相应许可证的完整内容。<span>GitHub<span class="heti-spacing"> </span></span>创建仓库时提供了许可证模板，也会自动识别一部分常见许可证。</p>
+<p>一个<strong>许可证</strong>规定了使用、复制、修改、分发软件的条件。希望在项目之外复制、修改或再分发代码，应先取得作者授予的相应许可。</p>
+<p>下面列出几类经常遇到的软件许可证：</p>
+<table>
+<thead>
+<tr>
+<th>许可证</th>
+<th>主要特点</th>
+<th>链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MIT</strong></td>
+<td>相当宽松的许可证， 允许使用、修改、商业利用与再分发，要求保留版权和许可声明。</td>
+<td><a href="https://mit-license.org/">https://mit-license.org/</a></td>
+</tr>
+<tr>
+<td><strong>Apache-2.0</strong></td>
+<td>比较宽松许可证，包含明确的专利授权以及保留许可证、标明修改等要求。</td>
+<td><a href="https://www.apache.org/licenses/LICENSE-2.0.html">https://www.apache.org/licenses/LICENSE-2.0.html</a></td>
+</tr>
+<tr>
+<td><strong>GPLv3</strong></td>
+<td>较强的<span class="heti-skip"><span class="heti-spacing"> </span>Copyleft<span class="heti-spacing"> </span></span>许可证，分发这个许可证下的程序时，需要履行相应的源码开放和同许可证义务。</td>
+<td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html">https://www.gnu.org/licenses/gpl-3.0.en.html</a></td>
+</tr>
+<tr>
+<td><strong>LGPLv3</strong></td>
+<td>较弱的<span class="heti-skip"><span class="heti-spacing"> </span>Copyleft<span class="heti-spacing"> </span></span>许可证，常用于程序库，对库本身的修改及其使用方式作出了规定。</td>
+<td><a href="https://www.gnu.org/licenses/lgpl-3.0.en.html">https://www.gnu.org/licenses/lgpl-3.0.en.html</a></td>
+</tr>
+<tr>
+<td><strong>AGPLv3</strong></td>
+<td>在<span class="heti-skip"><span class="heti-spacing"> </span>GPL<span class="heti-spacing"> </span></span>相关要求之外，对经过修改并通过网络向用户提供交互的软件，还增加了提供源代码的义务。</td>
+<td><a href="https://www.gnu.org/licenses/agpl-3.0.html">https://www.gnu.org/licenses/agpl-3.0.html</a></td>
+</tr>
+<tr>
+<td><strong>Unlicense</strong></td>
+<td>放弃版权及相关许可。</td>
+<td><a href="https://unlicense.org/">https://unlicense.org/</a></td>
+</tr>
+</tbody>
+</table>
+<div align="center">
+<img alt="常见软件许可证对比图" src="https://www.ruanyifeng.com/blogimg/asset/201105/free_software_licenses.png"/>
+<br/>
+<font color="gray" size="2"><i>图片来自 <a href="https://www.ruanyifeng.com/blog/2011/05/how_to_choose_free_software_licenses.html">如何选择开源许可证？ - 阮一峰的网络日志</a></i></font>
+</div>
+<p>关于各种许可证，大家可以参考： <a href="https://choosealicense.com/licenses/"><span>Choose a License<span class="heti-spacing"> </span></span></a>及其 <a href="https://choosealicense.com/appendix/">完整许可证列表</a>。</p>
+<h2 id="creative-commons">文档、图片与其他内容：Creative Commons</h2>
+<p>软件以外的文章、图片、图表、影音作品等，经常采用<a href="https://creativecommons.org/share-your-work/cclicenses/"><span><span class="heti-spacing"> </span>Creative Commons</span>（CC）</a> 系列许可证，这类许可证明确了作品如何被分享、引用和改编。</p>
+<p><span>CC<span class="heti-spacing"> </span></span>的常见的标记有：</p>
+<table>
+<thead>
+<tr>
+<th>标记</th>
+<th>含义</th>
+<th>标识</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CC0</strong></td>
+<td>作者通过专用法律工具尽可能放弃相关权利，让作品用于公共领域。</td>
+<td><img alt="CC0" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/cc-zero.png" style="display: block; margin: 0 auto;"/></td>
+</tr>
+<tr>
+<td><strong>CC BY</strong></td>
+<td>允许分享与改编，使用时需要署名原作者（Attribution<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</td>
+<td><img alt="CC BY" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by.png" style="display: block; margin: 0 auto;"/></td>
+</tr>
+<tr>
+<td><strong>CC BY-SA</strong></td>
+<td>在署名基础上，分发改编作品时要求使用相同的许可条件（ShareAlike<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</td>
+<td><img alt="CC BY-SA" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" style="display: block; margin: 0 auto;"/></td>
+</tr>
+<tr>
+<td><strong>CC BY-NC</strong></td>
+<td>禁止商用（NonCommercial<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</td>
+<td><img alt="CC BY-NC" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc.png" style="display: block; margin: 0 auto;"/></td>
+</tr>
+<tr>
+<td><strong>CC BY-NC-SA</strong></td>
+<td>署名原作者、禁止商用、并要求使用相同许可证。</td>
+<td><img alt="CC BY-NC-SA" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png" style="display: block; margin: 0 auto;"/></td>
+</tr>
+<tr>
+<td><strong>CC BY-ND</strong></td>
+<td>署名原作者，且不能修改作品（NoDerivatives<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</td>
+<td><img alt="CC BY-ND" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nd.png" style="display: block; margin: 0 auto;"/></td>
+</tr>
+<tr>
+<td><strong>CC BY-NC-ND</strong></td>
+<td>署名、禁止商用，且不能修改作品。</td>
+<td><img alt="CC BY-NC-ND" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-nd.png" style="display: block; margin: 0 auto;"/></td>
+</tr>
+</tbody>
+</table>
+<p><span>CC<span class="heti-spacing"> </span></span>许可证当前的版本是<span><span class="heti-spacing"> </span>4.0</span>，写法如 <code>CC BY 4.0</code>。</p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<nav aria-label="页脚" class="md-footer__inner md-grid">
+<a aria-label="上一页: GitHub 与项目协作" class="md-footer__link md-footer__link--prev" href="../github/">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                上一页
+              </span>
+<div class="md-ellipsis">
+                GitHub 与项目协作
+              </div>
+</div>
+</a>
+<a aria-label="下一页: 浅谈 C 语言的数据类型" class="md-footer__link md-footer__link--next" href="../../misc/c-types/">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                下一页
+              </span>
+<div class="md-ellipsis">
+                浅谈 C 语言的数据类型
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2026 GoldfishHorse；基于 <a href="https://github.com/ZhouTimeMachine/2023_FPA" rel="noopener" target="_blank">ZhouTimeMachine/2023_FPA</a> 修改
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.footer"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+<script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+<script src="../../js/katex.js"></script>
+<script src="../../js/sorting.js"></script>
+</body>
+</html>
